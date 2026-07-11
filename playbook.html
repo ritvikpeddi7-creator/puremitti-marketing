@@ -1,0 +1,847 @@
+<title>Pure Mitti · 30-Day Social Content Playbook</title>
+<style>
+  :root{
+    --paper:#EFE8DC; --paper-2:#E7DDCC; --card:#F7F2E8; --card-2:#F1EADC;
+    --ink:#241E18; --ink-2:#544A3D; --ink-3:#7A6E5D;
+    --green:#3B4A34; --green-2:#54654A; --terra:#B15A36; --ochre:#C6903C;
+    --line:#D8CBB4; --line-2:#C8B99D;
+    --p-edu:#3B4A34; --p-asmr:#B15A36; --p-founder:#C6903C; --p-trend:#3E6B63;
+    --p-proof:#9B5A4A; --p-sustain:#6E7B4D; --p-offer:#6B4A6B;
+    --serif:"Iowan Old Style","Palatino Linotype",Palatino,"Book Antiqua",Georgia,serif;
+    --sans:"Avenir Next","Avenir","Segoe UI",system-ui,-apple-system,Helvetica,Arial,sans-serif;
+    --mono:"SF Mono","JetBrains Mono",ui-monospace,Menlo,Consolas,monospace;
+  }
+  *{box-sizing:border-box}
+  body,.page{margin:0}
+  .page{background:var(--paper);color:var(--ink);font-family:var(--sans);
+    line-height:1.6;font-size:16px;-webkit-font-smoothing:antialiased;
+    background-image:radial-gradient(circle at 12% -5%, #F2ECE0 0%, rgba(242,236,224,0) 42%);}
+  .wrap{max-width:1080px;margin:0 auto;padding:0 28px}
+  .reading{max-width:680px}
+  h1,h2,h3,h4{font-family:var(--serif);font-weight:600;color:var(--green);
+    text-wrap:balance;line-height:1.12;margin:0}
+  p{margin:0 0 14px}
+  a{color:var(--terra)}
+  .eyebrow{font-family:var(--mono);font-size:11.5px;letter-spacing:.22em;
+    text-transform:uppercase;color:var(--terra);font-weight:500;margin:0 0 12px}
+  .label{font-family:var(--mono);font-size:11px;letter-spacing:.14em;
+    text-transform:uppercase;color:var(--ink-3);font-weight:500}
+
+  /* Masthead */
+  .mast{border-bottom:2px solid var(--green);padding:70px 0 40px;position:relative}
+  .mast::before{content:"";position:absolute;left:0;bottom:-2px;width:180px;
+    height:2px;background:var(--terra)}
+  .mast h1{font-size:clamp(38px,6.4vw,74px);letter-spacing:-.015em;color:var(--ink)}
+  .mast .sub{font-family:var(--serif);font-style:italic;font-size:clamp(18px,2.4vw,25px);
+    color:var(--green-2);margin-top:14px;max-width:640px}
+  .mast .meta{display:flex;flex-wrap:wrap;gap:10px 26px;margin-top:30px;
+    font-family:var(--mono);font-size:12px;color:var(--ink-2);letter-spacing:.04em}
+  .mast .meta b{color:var(--green);font-weight:500}
+
+  section{padding:52px 0;border-bottom:1px solid var(--line)}
+  .sec-head{margin-bottom:30px}
+  .sec-head h2{font-size:clamp(26px,3.6vw,38px);letter-spacing:-.01em}
+  .sec-head .kicker{margin-top:10px;color:var(--ink-2);max-width:600px}
+
+  /* Gap callout */
+  .gap{background:var(--green);color:#F2ECDD;border-radius:14px;padding:34px 36px;
+    position:relative;overflow:hidden}
+  .gap h3{color:#F5EFDF;font-size:23px;margin-bottom:16px}
+  .gap p{color:#DED5C0;margin:0}
+  .gap .own{font-family:var(--serif);font-size:20px;font-style:italic;color:#F0C88A;
+    margin-top:18px;line-height:1.4}
+  .gap .stack{display:flex;flex-direction:column;gap:12px;margin:0 0 4px}
+  .gap .row{display:flex;gap:14px;align-items:baseline}
+  .gap .row .n{font-family:var(--mono);font-size:12px;color:#E0A96B;min-width:88px;
+    text-transform:uppercase;letter-spacing:.08em;flex-shrink:0}
+  .gap .row span{color:#D6CDB8;font-size:14.5px}
+
+  /* Persona cards */
+  .cards3{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:18px}
+  .persona{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:24px}
+  .persona .who{font-family:var(--serif);font-size:19px;color:var(--green);font-weight:600}
+  .persona .tag{font-family:var(--mono);font-size:11px;color:var(--terra);
+    letter-spacing:.08em;margin:6px 0 12px}
+  .persona p{font-size:14px;color:var(--ink-2);margin:0}
+
+  /* Pillars */
+  .pillars{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:14px;margin-bottom:26px}
+  .pillar{background:var(--card);border-radius:11px;padding:18px 18px 20px;
+    border-top:4px solid var(--pc)}
+  .pillar .day{font-family:var(--mono);font-size:11px;letter-spacing:.1em;
+    text-transform:uppercase;color:var(--ink-3)}
+  .pillar .nm{font-family:var(--serif);font-size:18px;color:var(--ink);margin:4px 0 8px}
+  .pillar .jb{font-size:13px;color:var(--ink-2);line-height:1.45}
+  .mixbar{display:flex;height:34px;border-radius:8px;overflow:hidden;border:1px solid var(--line)}
+  .mixbar div{display:flex;align-items:center;justify-content:center;color:#fff;
+    font-family:var(--mono);font-size:10.5px;letter-spacing:.02em}
+
+  /* Two-col info */
+  .duo{display:grid;grid-template-columns:1fr 1fr;gap:22px}
+  .panel{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:26px 28px}
+  .panel h3{font-size:19px;margin-bottom:14px}
+  .plat{display:flex;flex-direction:column;gap:12px}
+  .plat .p{display:flex;gap:12px;align-items:baseline}
+  .plat .p .k{font-family:var(--mono);font-size:12px;color:var(--terra);min-width:74px;
+    letter-spacing:.03em;flex-shrink:0}
+  .plat .p span{font-size:14px;color:var(--ink-2)}
+  .steps{counter-reset:s;display:flex;flex-direction:column;gap:16px}
+  .step{display:flex;gap:14px}
+  .step .b{font-family:var(--mono);font-size:12px;color:#fff;background:var(--green);
+    width:26px;height:26px;border-radius:50%;display:flex;align-items:center;
+    justify-content:center;flex-shrink:0;counter-increment:s}
+  .step .b::before{content:counter(s)}
+  .step .t b{font-family:var(--serif);color:var(--green);font-weight:600;font-size:15px}
+  .step .t span{display:block;font-size:13.5px;color:var(--ink-2);margin-top:2px}
+
+  /* Hook bank */
+  .hooks{columns:2;column-gap:24px}
+  .hooks .h{break-inside:avoid;background:var(--card);border-left:3px solid var(--terra);
+    padding:13px 16px;margin-bottom:12px;border-radius:0 8px 8px 0;font-family:var(--serif);
+    font-size:15.5px;color:var(--ink);line-height:1.35}
+
+  /* Hashtag library */
+  .htags{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px}
+  .htag{background:var(--card);border:1px solid var(--line);border-radius:11px;padding:18px}
+  .htag .nm{font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;
+    color:var(--terra);margin-bottom:10px}
+  .htag .t{display:flex;flex-wrap:wrap;gap:6px}
+  .chip{font-family:var(--mono);font-size:11.5px;background:var(--card-2);border:1px solid var(--line);
+    color:var(--green);padding:3px 9px;border-radius:20px}
+
+  /* KPI */
+  .kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:14px}
+  .kpi{background:var(--card);border-radius:11px;padding:18px 20px;border:1px solid var(--line)}
+  .kpi .n{font-family:var(--serif);font-size:15px;color:var(--green);font-weight:600}
+  .kpi .d{font-size:13px;color:var(--ink-2);margin-top:4px}
+
+  /* Calendar */
+  .cal{display:grid;grid-template-columns:repeat(7,1fr);gap:8px}
+  .cal .dow{font-family:var(--mono);font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;
+    color:var(--ink-3);text-align:center;padding-bottom:2px}
+  .cell{background:var(--card);border:1px solid var(--line);border-radius:9px;padding:10px 10px 12px;
+    min-height:78px;border-top:4px solid var(--pc);display:flex;flex-direction:column;gap:3px}
+  .cell.empty{background:transparent;border:1px dashed var(--line);border-top:1px dashed var(--line)}
+  .cell .dn{font-family:var(--mono);font-size:12px;color:var(--ink-3)}
+  .cell .pl{font-family:var(--serif);font-size:13.5px;color:var(--ink);font-weight:600;line-height:1.15}
+  .cell .tt{font-size:11px;color:var(--ink-2);line-height:1.25}
+  .legend{display:flex;flex-wrap:wrap;gap:10px 18px;margin-top:22px}
+  .legend .l{display:flex;align-items:center;gap:7px;font-size:12.5px;color:var(--ink-2)}
+  .legend .l i{width:12px;height:12px;border-radius:3px;background:var(--pc);display:inline-block}
+
+  /* Briefs */
+  .weekhead{display:flex;align-items:baseline;gap:16px;margin:40px 0 20px;flex-wrap:wrap}
+  .weekhead .wn{font-family:var(--mono);font-size:12px;color:var(--terra);letter-spacing:.14em;text-transform:uppercase}
+  .weekhead h3{font-size:24px}
+  .weekhead .th{font-family:var(--serif);font-style:italic;color:var(--green-2);font-size:16px}
+  .brief{background:var(--card);border:1px solid var(--line);border-radius:13px;
+    padding:24px 26px;margin-bottom:16px;border-left:5px solid var(--pc)}
+  .brief .top{display:flex;align-items:flex-start;gap:16px;margin-bottom:14px;flex-wrap:wrap}
+  .brief .dnum{font-family:var(--serif);font-size:34px;font-weight:600;color:var(--pc);
+    line-height:.9;font-variant-numeric:tabular-nums}
+  .brief .tmeta{flex:1;min-width:180px}
+  .brief .tmeta .dw{font-family:var(--serif);font-size:18px;color:var(--ink);font-weight:600}
+  .brief .chip-p{display:inline-block;font-family:var(--mono);font-size:10.5px;letter-spacing:.06em;
+    text-transform:uppercase;color:#fff;background:var(--pc);padding:2px 9px;border-radius:20px;margin-left:8px;
+    vertical-align:2px}
+  .brief .plats{font-family:var(--mono);font-size:11px;color:var(--ink-3);margin-top:4px;letter-spacing:.02em}
+  .hook{background:var(--card-2);border:1px solid var(--line);border-radius:10px;padding:15px 18px;margin:0 0 16px}
+  .hook .hl{font-family:var(--mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--terra)}
+  .hook .ht{font-family:var(--serif);font-size:18px;color:var(--ink);line-height:1.32;margin-top:5px}
+  .hook .ht em{color:var(--green-2);font-style:italic}
+  .fields{display:grid;grid-template-columns:88px 1fr;gap:9px 18px;font-size:14px}
+  .fields dt{font-family:var(--mono);font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;
+    color:var(--ink-3);padding-top:2px}
+  .fields dd{margin:0;color:var(--ink-2);line-height:1.5}
+  .fields dd.cap{font-family:var(--serif);color:var(--ink);font-style:italic}
+  .fields .tg{display:flex;flex-wrap:wrap;gap:5px}
+  .confirm{color:var(--terra);font-family:var(--mono);font-size:12px}
+
+  .foot{padding:44px 0 70px;color:var(--ink-2);font-size:13.5px}
+  .foot b{color:var(--green);font-family:var(--serif)}
+  @media(max-width:720px){
+    .hooks{columns:1}.duo{grid-template-columns:1fr}
+    .cal{grid-template-columns:repeat(2,1fr)}.cal .dow{display:none}
+    .cell{border-top-width:4px}.fields{grid-template-columns:1fr}.fields dt{padding-top:8px}
+  }
+  @page{size:Letter;margin:14mm 13mm}
+  @media print{
+    *{-webkit-print-color-adjust:exact !important;print-color-adjust:exact !important}
+    .page{background:var(--paper) !important}
+    .wrap{max-width:100%;padding:0}
+    section{padding:26px 0;break-inside:avoid}
+    .mast{padding:8px 0 30px;break-after:avoid}
+    .mast h1{font-size:56px}
+    .sec-head{break-after:avoid}
+    .weekhead{break-after:avoid;break-inside:avoid}
+    .brief,.persona,.pillar,.panel,.htag,.kpi,.gap,.hooks .h,.cell{break-inside:avoid}
+    .duo{break-inside:avoid}
+    h2,h3{break-after:avoid}
+  }
+</style>
+<div class="page">
+<div class="wrap">
+
+  <header class="mast">
+    <div class="eyebrow">Social content strategy · prepared July 2026</div>
+    <h1>Pure Mitti</h1>
+    <div class="sub">A 30-day short-form video playbook — one shoot a day, four platforms, built on where our competitors leave the door open.</div>
+    <div class="meta">
+      <div><b>Brand</b> Non-toxic, Ayurveda-inspired care</div>
+      <div><b>Founder</b> Suniti Ramanujam</div>
+      <div><b>Home</b> Basking Ridge, NJ</div>
+      <div><b>Channels</b> Reels · TikTok · Shorts · Facebook</div>
+    </div>
+  </header>
+
+  <section>
+    <div class="sec-head reading">
+      <div class="eyebrow">The strategy in one screen</div>
+      <h2>We don't need more reach. We need to own an intersection.</h2>
+      <p class="kicker">The competitor research shows a clear white space. Every one of the next 30 videos is engineered to plant Pure Mitti in the middle of it — and to be filmed in a handful of batch sessions, not thirty separate shoots.</p>
+    </div>
+    <div class="gap">
+      <h3>What the competition leaves open</h3>
+      <div class="stack">
+        <div class="row"><span class="n">Ayurvedic</span><span>Ranavat, Fable &amp; Mane, UMA — aspirational, but premium-priced, skincare/hair only, not handmade.</span></div>
+        <div class="row"><span class="n">Handmade</span><span>Osmia, Chagrin Valley — real craft, but no Ayurvedic story and dated content.</span></div>
+        <div class="row"><span class="n">Clean home</span><span>Blueland, Branch Basics — home-only, clinical tone, no heritage or face.</span></div>
+      </div>
+      <div class="own">Pure Mitti is the only brand at the intersection of Ayurvedic heritage + genuinely handmade + body <em>and</em> home + an accessible price + a real founder with local NJ roots. Every post reinforces that intersection.</div>
+    </div>
+  </section>
+
+  <section>
+    <div class="sec-head reading">
+      <div class="eyebrow">Who we're talking to</div>
+      <h2>Three people, one shelf</h2>
+    </div>
+    <div class="cards3">
+      <div class="persona"><div class="who">The Clean-Swap Parent</div><div class="tag">30–45 · NJ / suburban</div><p>Cutting toxins for the family. Loves handmade, local, and "ingredients I can pronounce." Buys to protect people she loves.</p></div>
+      <div class="persona"><div class="who">The Ritual Seeker</div><div class="tag">25–35 · wellness-native</div><p>Deep into Ayurveda, self-care and the "clean girl" aesthetic. Buys the ritual and the story as much as the bar.</p></div>
+      <div class="persona"><div class="who">The Conscious Gifter</div><div class="tag">all ages · discovers on IG/Etsy</div><p>Wants a thoughtful, sustainable gift that doesn't feel cheap. Converts on gift sets and beautiful unboxings.</p></div>
+    </div>
+  </section>
+
+  <section>
+    <div class="sec-head reading">
+      <div class="eyebrow">The weekly engine</div>
+      <h2>Seven pillars, one per day</h2>
+      <p class="kicker">A fixed rhythm makes a month plannable and batch-shootable. The mix keeps us teaching and connecting far more than selling.</p>
+    </div>
+    <div class="pillars">
+      <div class="pillar" style="--pc:var(--p-edu)"><div class="day">Mon</div><div class="nm">Education</div><div class="jb">Teach ingredients &amp; Ayurveda → authority</div></div>
+      <div class="pillar" style="--pc:var(--p-asmr)"><div class="day">Tue</div><div class="nm">Product / ASMR</div><div class="jb">Show the craft → desire</div></div>
+      <div class="pillar" style="--pc:var(--p-founder)"><div class="day">Wed</div><div class="nm">Founder / BTS</div><div class="jb">Suniti's story → trust</div></div>
+      <div class="pillar" style="--pc:var(--p-trend)"><div class="day">Thu</div><div class="nm">Trend</div><div class="jb">Ride reach → discovery</div></div>
+      <div class="pillar" style="--pc:var(--p-proof)"><div class="day">Fri</div><div class="nm">Social Proof</div><div class="jb">Real voices → credibility</div></div>
+      <div class="pillar" style="--pc:var(--p-sustain)"><div class="day">Sat</div><div class="nm">Sustainability</div><div class="jb">Values &amp; swaps → saves/shares</div></div>
+      <div class="pillar" style="--pc:var(--p-offer)"><div class="day">Sun</div><div class="nm">Soft Offer</div><div class="jb">Convert warm audience → sales</div></div>
+    </div>
+    <div class="label" style="margin-bottom:8px">Monthly content mix</div>
+    <div class="mixbar">
+      <div style="flex:22;background:var(--p-edu)">Education 22%</div>
+      <div style="flex:15;background:var(--p-founder)">Founder 15%</div>
+      <div style="flex:15;background:var(--p-asmr)">Product 15%</div>
+      <div style="flex:15;background:var(--p-proof)">Proof 15%</div>
+      <div style="flex:15;background:var(--p-sustain)">Swap 15%</div>
+      <div style="flex:10;background:var(--p-trend)">Trend 10%</div>
+      <div style="flex:8;background:var(--p-offer)">Offer 8%</div>
+    </div>
+  </section>
+
+  <section>
+    <div class="sec-head reading">
+      <div class="eyebrow">How it gets made</div>
+      <h2>One shoot, four cuts. A month in three sessions.</h2>
+    </div>
+    <div class="duo">
+      <div class="panel">
+        <h3>Platform system</h3>
+        <div class="plat">
+          <div class="p"><span class="k">Reels</span><span>Primary growth engine — optimize the hook and saves.</span></div>
+          <div class="p"><span class="k">TikTok</span><span>Same cut — lean into ASMR, trends, raw authenticity.</span></div>
+          <div class="p"><span class="k">Shorts</span><span>Same cut + a keyword-rich title for long-tail search.</span></div>
+          <div class="p"><span class="k">Facebook</span><span>Founder stories, reviews, community — longer captions + links.</span></div>
+          <div class="p"><span class="k">Cadence</span><span>1 short-form/day + stories &amp; reposts. Consistent beats perfect.</span></div>
+          <div class="p"><span class="k">Timing</span><span>IG 11a–1p &amp; 7–9p ET · TikTok 6–10a &amp; 7–11p ET (test &amp; adjust).</span></div>
+        </div>
+      </div>
+      <div class="panel">
+        <h3>Batch production</h3>
+        <div class="steps">
+          <div class="step"><div class="b"></div><div class="t"><b>The making bench</b><span>All ASMR / process + ingredient B-roll (every Tue + Mon).</span></div></div>
+          <div class="step"><div class="b"></div><div class="t"><b>Founder, natural light</b><span>Every to-camera founder &amp; education talking head (Wed + explainers).</span></div></div>
+          <div class="step"><div class="b"></div><div class="t"><b>Bathroom / shelf / lifestyle</b><span>Swaps, routines, gifting, offers.</span></div></div>
+        </div>
+        <p style="font-size:13.5px;color:var(--ink-2);margin:18px 0 0">Bank a <b style="font-family:var(--serif);color:var(--green)">B-roll library</b> every session — hands, pours, textures, close-ups — to reuse all month. Trend (Thu) &amp; UGC (Fri) are filmed reactively, week-of.</p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="sec-head reading">
+      <div class="eyebrow">The hook bank</div>
+      <h2>The first two seconds do all the work</h2>
+      <p class="kicker">A weak opener kills the video no matter how good the rest is. Pull from these; write more in the same voice — curiosity, tension, or a bold claim.</p>
+    </div>
+    <div class="hooks">
+      <div class="h">"You're rubbing this on your face every day — do you know what's in it?"</div>
+      <div class="h">"I left advertising to make soap. Everyone thought I'd lost it."</div>
+      <div class="h">"Flip over your soap bottle right now — I'll wait."</div>
+      <div class="h">"POV: the most satisfying part of making soap." <span style="color:var(--ink-3)">(sound on)</span></div>
+      <div class="h">"This bottle will exist longer than you will."</div>
+      <div class="h">"Your 'natural' soap might have one ingredient that isn't."</div>
+      <div class="h">"Most bars on your shelf aren't legally allowed to be called soap."</div>
+      <div class="h">"You've been using your soap bar wrong this whole time."</div>
+      <div class="h">"The ingredient your grandmother used that skincare forgot."</div>
+      <div class="h">"Why my bars cost more than the drugstore — and why people keep coming back."</div>
+      <div class="h">"This is what 'fragrance' on a label actually hides."</div>
+      <div class="h">"One bar. Five uses. Here's the math."</div>
+      <div class="h">"Made this morning in Basking Ridge. Here's the whole process."</div>
+      <div class="h">"I didn't write this review. A real customer did."</div>
+      <div class="h">"3 things I threw out of my bathroom — and what I use now."</div>
+      <div class="h">"Wait for the cut." <span style="color:var(--ink-3)">(ASMR)</span></div>
+      <div class="h">"Something new is curing in the workshop right now."</div>
+      <div class="h">"If you can't picture the ingredient in your kitchen, it's probably not traditional."</div>
+      <div class="h">"Rating my skincare shelf, Ayurveda edition."</div>
+      <div class="h">"We sold out of this twice. It's back — for 48 hours."</div>
+      <div class="h">"Same shower routine. Zero plastic bottles."</div>
+      <div class="h">"My old job paid me to sell things I didn't believe in."</div>
+      <div class="h">"Turn your volume up — this is what real soap sounds like."</div>
+      <div class="h">"Read the back of your body wash. I'll wait."</div>
+    </div>
+  </section>
+
+  <section>
+    <div class="sec-head reading">
+      <div class="eyebrow">Caption toolkit</div>
+      <h2>Hashtag sets, ready to paste</h2>
+    </div>
+    <div class="htags">
+      <div class="htag"><div class="nm">Education</div><div class="t"><span class="chip">#PureMitti</span><span class="chip">#CleanBeauty</span><span class="chip">#IngredientEducation</span><span class="chip">#AyurvedaSkincare</span><span class="chip">#NonToxicLiving</span><span class="chip">#ReadTheLabel</span><span class="chip">#HandmadeSoap</span></div></div>
+      <div class="htag"><div class="nm">Product / ASMR</div><div class="t"><span class="chip">#PureMitti</span><span class="chip">#SoapCutting</span><span class="chip">#SoapASMR</span><span class="chip">#SatisfyingVideo</span><span class="chip">#SmallBatch</span><span class="chip">#HandmadeSoap</span><span class="chip">#ClaySoap</span></div></div>
+      <div class="htag"><div class="nm">Founder / BTS</div><div class="t"><span class="chip">#PureMitti</span><span class="chip">#FounderStory</span><span class="chip">#WomenOwnedBusiness</span><span class="chip">#SmallBusiness</span><span class="chip">#BehindTheBrand</span><span class="chip">#NJSmallBusiness</span><span class="chip">#AyurvedaInspired</span></div></div>
+      <div class="htag"><div class="nm">Social Proof</div><div class="t"><span class="chip">#PureMitti</span><span class="chip">#RealReviews</span><span class="chip">#CustomerLove</span><span class="chip">#UGC</span><span class="chip">#SkinJourney</span><span class="chip">#CleanBeautyCommunity</span></div></div>
+      <div class="htag"><div class="nm">Sustainability</div><div class="t"><span class="chip">#PureMitti</span><span class="chip">#SustainableSwap</span><span class="chip">#PlasticFree</span><span class="chip">#ZeroWasteBeauty</span><span class="chip">#EcoSwap</span><span class="chip">#CleanLiving</span></div></div>
+      <div class="htag"><div class="nm">Gifting / Offer</div><div class="t"><span class="chip">#PureMitti</span><span class="chip">#ShopSmall</span><span class="chip">#CleanGifting</span><span class="chip">#GiftSet</span><span class="chip">#NonToxicGifts</span><span class="chip">#TryPureMitti</span></div></div>
+    </div>
+  </section>
+
+  <section>
+    <div class="sec-head reading">
+      <div class="eyebrow">How we prove it worked</div>
+      <h2>What to report each week</h2>
+      <p class="kicker">Track these, then double down on the top 20% of hooks and cut what flops. The plan is a hypothesis; the data decides week two onward.</p>
+    </div>
+    <div class="kpis">
+      <div class="kpi"><div class="n">Reach &amp; Views</div><div class="d">Top-of-funnel discovery</div></div>
+      <div class="kpi"><div class="n">Saves</div><div class="d">The truest intent signal on Reels</div></div>
+      <div class="kpi"><div class="n">Shares</div><div class="d">How far the message travels</div></div>
+      <div class="kpi"><div class="n">Watch-through</div><div class="d">Did the hook hold?</div></div>
+      <div class="kpi"><div class="n">Follower growth</div><div class="d">Compounding audience</div></div>
+      <div class="kpi"><div class="n">Link clicks</div><div class="d">Path to the shop</div></div>
+    </div>
+  </section>
+
+  <section>
+    <div class="sec-head reading">
+      <div class="eyebrow">The month at a glance</div>
+      <h2>30-day calendar</h2>
+    </div>
+    <div class="cal">
+      <div class="dow">Mon</div><div class="dow">Tue</div><div class="dow">Wed</div><div class="dow">Thu</div><div class="dow">Fri</div><div class="dow">Sat</div><div class="dow">Sun</div>
+
+      <div class="cell" style="--pc:var(--p-edu)"><div class="dn">01</div><div class="pl">Education</div><div class="tt">Read your label</div></div>
+      <div class="cell" style="--pc:var(--p-asmr)"><div class="dn">02</div><div class="pl">ASMR</div><div class="tt">Soap-cut sound</div></div>
+      <div class="cell" style="--pc:var(--p-founder)"><div class="dn">03</div><div class="pl">Founder</div><div class="tt">Ad exec → soap</div></div>
+      <div class="cell" style="--pc:var(--p-trend)"><div class="dn">04</div><div class="pl">Trend</div><div class="tt">Greenwashing POV</div></div>
+      <div class="cell" style="--pc:var(--p-proof)"><div class="dn">05</div><div class="pl">Proof</div><div class="tt">First reaction</div></div>
+      <div class="cell" style="--pc:var(--p-sustain)"><div class="dn">06</div><div class="pl">Swap</div><div class="tt">Bottle → bar</div></div>
+      <div class="cell" style="--pc:var(--p-offer)"><div class="dn">07</div><div class="pl">Offer</div><div class="tt">Soft invite</div></div>
+
+      <div class="cell" style="--pc:var(--p-edu)"><div class="dn">08</div><div class="pl">Education</div><div class="tt">Make a bar last</div></div>
+      <div class="cell" style="--pc:var(--p-asmr)"><div class="dn">09</div><div class="pl">ASMR</div><div class="tt">Neem + turmeric</div></div>
+      <div class="cell" style="--pc:var(--p-founder)"><div class="dn">10</div><div class="pl">Founder</div><div class="tt">Kitchen origin</div></div>
+      <div class="cell" style="--pc:var(--p-trend)"><div class="dn">11</div><div class="pl">Trend</div><div class="tt">Rate my shelf</div></div>
+      <div class="cell" style="--pc:var(--p-proof)"><div class="dn">12</div><div class="pl">Proof</div><div class="tt">Eczema review</div></div>
+      <div class="cell" style="--pc:var(--p-sustain)"><div class="dn">13</div><div class="pl">Swap</div><div class="tt">3 months plastic</div></div>
+      <div class="cell" style="--pc:var(--p-offer)"><div class="dn">14</div><div class="pl">Offer</div><div class="tt">Sunday reset kit</div></div>
+
+      <div class="cell" style="--pc:var(--p-edu)"><div class="dn">15</div><div class="pl">Education</div><div class="tt">"Natural" isn't regulated</div></div>
+      <div class="cell" style="--pc:var(--p-asmr)"><div class="dn">16</div><div class="pl">ASMR</div><div class="tt">Wait for the cut</div></div>
+      <div class="cell" style="--pc:var(--p-founder)"><div class="dn">17</div><div class="pl">Founder</div><div class="tt">The "why" rule</div></div>
+      <div class="cell" style="--pc:var(--p-trend)"><div class="dn">18</div><div class="pl">Trend</div><div class="tt">Shelf swap POV</div></div>
+      <div class="cell" style="--pc:var(--p-proof)"><div class="dn">19</div><div class="pl">Proof</div><div class="tt">Read a real review</div></div>
+      <div class="cell" style="--pc:var(--p-sustain)"><div class="dn">20</div><div class="pl">Swap</div><div class="tt">450 yrs vs 6 wks</div></div>
+      <div class="cell" style="--pc:var(--p-offer)"><div class="dn">21</div><div class="pl">Offer</div><div class="tt">Starter set</div></div>
+
+      <div class="cell" style="--pc:var(--p-edu)"><div class="dn">22</div><div class="pl">Education</div><div class="tt">Soap vs detergent</div></div>
+      <div class="cell" style="--pc:var(--p-asmr)"><div class="dn">23</div><div class="pl">ASMR</div><div class="tt">Fresh batch cut</div></div>
+      <div class="cell" style="--pc:var(--p-founder)"><div class="dn">24</div><div class="pl">Founder</div><div class="tt">Garage → brand</div></div>
+      <div class="cell" style="--pc:var(--p-trend)"><div class="dn">25</div><div class="pl">Trend</div><div class="tt">Routine makes sense</div></div>
+      <div class="cell" style="--pc:var(--p-proof)"><div class="dn">26</div><div class="pl">Proof</div><div class="tt">Feature customers</div></div>
+      <div class="cell" style="--pc:var(--p-sustain)"><div class="dn">27</div><div class="pl">Swap</div><div class="tt">Swap this, not that</div></div>
+      <div class="cell" style="--pc:var(--p-offer)"><div class="dn">28</div><div class="pl">Offer</div><div class="tt">Gift set — 48h</div></div>
+
+      <div class="cell" style="--pc:var(--p-founder)"><div class="dn">29</div><div class="pl">Best-of</div><div class="tt">Remix top post</div></div>
+      <div class="cell" style="--pc:var(--p-offer)"><div class="dn">30</div><div class="pl">Tease</div><div class="tt">What's coming</div></div>
+      <div class="cell empty"></div><div class="cell empty"></div><div class="cell empty"></div><div class="cell empty"></div><div class="cell empty"></div>
+    </div>
+    <div class="legend">
+      <div class="l" style="--pc:var(--p-edu)"><i></i>Education</div>
+      <div class="l" style="--pc:var(--p-asmr)"><i></i>Product / ASMR</div>
+      <div class="l" style="--pc:var(--p-founder)"><i></i>Founder / BTS</div>
+      <div class="l" style="--pc:var(--p-trend)"><i></i>Trend</div>
+      <div class="l" style="--pc:var(--p-proof)"><i></i>Social Proof</div>
+      <div class="l" style="--pc:var(--p-sustain)"><i></i>Sustainability</div>
+      <div class="l" style="--pc:var(--p-offer)"><i></i>Soft Offer</div>
+    </div>
+  </section>
+
+  <section>
+    <div class="sec-head reading">
+      <div class="eyebrow">The 30 briefs</div>
+      <h2>Every day, ready to shoot</h2>
+      <p class="kicker">Each brief is one filmable idea with the hook, shot list, script, caption and hashtags. Anything in <span class="confirm">terracotta</span> is a real detail to confirm before posting — never publish an unverified claim.</p>
+    </div>
+
+    <div class="weekhead"><span class="wn">Week 1</span><h3>Meet the maker &amp; the ingredients</h3><span class="th">awareness</span></div>
+
+    <article class="brief" style="--pc:var(--p-edu)">
+      <div class="top"><div class="dnum">01</div><div class="tmeta"><div class="dw">Monday <span class="chip-p">Education</span></div><div class="plats">Reels · TikTok · Shorts · Facebook</div></div></div>
+      <div class="hook"><div class="hl">Hook · 0–2s</div><div class="ht">"Your soap has a secret ingredient list you're not supposed to read." <em>/ "Flip over your soap bottle right now — I'll wait."</em></div></div>
+      <dl class="fields">
+        <dt>Shots</dt><dd>Flip a mass-market bottle → finger traces an unpronounceable name → Suniti holds a Pure Mitti bar → macro of neem / turmeric / clay <span class="confirm">[confirm heroes]</span> → hands kneading → "3 vs 14" text card.</dd>
+        <dt>Script</dt><dd>"See all that? Most of it isn't cleaning you — it's shelf life and lather. I make Pure Mitti with what my grandmother used: neem, tulsi, turmeric, clay. That's it. Ingredients you can actually pronounce, traditionally used to care for skin."</dd>
+        <dt>CTA</dt><dd>Comment "LIST" for our full ingredient breakdown.</dd>
+        <dt>Caption</dt><dd class="cap">Your soap's ingredient list is longer than your grocery receipt. Ours has 5.</dd>
+        <dt>Hashtags</dt><dd class="tg"><span class="chip">#PureMitti</span><span class="chip">#CleanBeauty</span><span class="chip">#IngredientEducation</span><span class="chip">#AyurvedaSkincare</span><span class="chip">#HandmadeSoap</span></dd>
+        <dt>Audio</dt><dd>Trending "explain it like I'm 5" sound, or original voiceover.</dd>
+        <dt>Repurpose</dt><dd>9:16 center-framed; burn captions for all four. Facebook gets a text-forward first 3s for sound-off.</dd>
+      </dl>
+    </article>
+
+    <article class="brief" style="--pc:var(--p-asmr)">
+      <div class="top"><div class="dnum">02</div><div class="tmeta"><div class="dw">Tuesday <span class="chip-p">Product / ASMR</span></div><div class="plats">Reels · TikTok · Shorts · Facebook</div></div></div>
+      <div class="hook"><div class="hl">Hook · 0–2s</div><div class="ht">"This is what real soap sounds like." <em>/ (no dialogue — pure ASMR open)</em></div></div>
+      <dl class="fields">
+        <dt>Shots</dt><dd>Overhead knife above a raw loaf → slow-mo slice → bar dropping onto wood → macro of the herb-flecked cross-section → fingertip press → cured bars on the rack.</dd>
+        <dt>Script</dt><dd>No VO. Text overlays: "Small batch." · "Cut by hand." · "No two bars identical." · "This is Pure Mitti." · "Would you try this one?"</dd>
+        <dt>CTA</dt><dd>Which bar are you most curious about?</dd>
+        <dt>Caption</dt><dd class="cap">The most satisfying 20 seconds of your feed today.</dd>
+        <dt>Hashtags</dt><dd class="tg"><span class="chip">#PureMitti</span><span class="chip">#SoapASMR</span><span class="chip">#SoapCutting</span><span class="chip">#ASMR</span><span class="chip">#SatisfyingVideo</span></dd>
+        <dt>Audio</dt><dd>Raw mic'd ASMR — no music (or a soft trending ASMR sound).</dd>
+        <dt>Repurpose</dt><dd>Film 4K for crop freedom. Facebook adds light background music under the ASMR since FB plays low.</dd>
+      </dl>
+    </article>
+
+    <article class="brief" style="--pc:var(--p-founder)">
+      <div class="top"><div class="dnum">03</div><div class="tmeta"><div class="dw">Wednesday <span class="chip-p">Founder · Anchor</span></div><div class="plats">Reels · TikTok · Shorts · Facebook</div></div></div>
+      <div class="hook"><div class="hl">Hook · two options</div><div class="ht">A — "I quit advertising to sell soap in my garage." <em>/</em> B — "My old job paid me to sell things I didn't believe in."</div></div>
+      <dl class="fields">
+        <dt>Shots</dt><dd>Suniti into her workshop, morning light → ad-agency-era photo <span class="confirm">[confirm asset]</span> → to-camera, handheld → hands pouring batter → stamped bars → smiling with a bar by her face.</dd>
+        <dt>Script</dt><dd>"I spent years in advertising selling things I didn't believe in. Then I started making soap for my own family — neem, turmeric, clay, the same ingredients my grandmother used. Word got out. Now it's Pure Mitti: handmade, honest, no shortcuts."</dd>
+        <dt>CTA</dt><dd>Follow along — new batches drop every week.</dd>
+        <dt>Caption</dt><dd class="cap">I used to sell ads. Now I sell soap I actually believe in.</dd>
+        <dt>Hashtags</dt><dd class="tg"><span class="chip">#PureMitti</span><span class="chip">#FounderStory</span><span class="chip">#WomenOwnedBusiness</span><span class="chip">#CleanLiving</span><span class="chip">#BehindTheBrand</span></dd>
+        <dt>Audio</dt><dd>Soft piano storytelling sound, or original voiceover.</dd>
+        <dt>Repurpose</dt><dd>Shoot both hooks back-to-back to A/B: IG/TikTok get Hook A, Shorts/FB get Hook B. Bank the full interview for long-form.</dd>
+      </dl>
+    </article>
+
+    <article class="brief" style="--pc:var(--p-trend)">
+      <div class="top"><div class="dnum">04</div><div class="tmeta"><div class="dw">Thursday <span class="chip-p">Trend</span></div><div class="plats">Reels · TikTok · Shorts · Facebook</div></div></div>
+      <div class="hook"><div class="hl">Hook · 0–2s</div><div class="ht">"POV: you read a 'natural' soap label and it's 90% fragrance." <em>/ "Tell me why this 'natural' brand has 12 unpronounceable ingredients."</em></div></div>
+      <dl class="fields">
+        <dt>Shots</dt><dd>Green-screen react to a mainstream "natural" label → shocked face → cut to our 4-ingredient bar → split-screen ingredient count → shrug + grin → "Read your labels." stamp.</dd>
+        <dt>Script</dt><dd>"'Natural' on the front, 12 things I can't pronounce on the back. That's not natural, that's marketing. Ours? Neem, tulsi, turmeric, clay. Four things. Being honest isn't a gimmick — it's the bar we hold ourselves to."</dd>
+        <dt>CTA</dt><dd>Send this to a friend obsessed with "clean" labels that aren't.</dd>
+        <dt>Caption</dt><dd class="cap">"Natural" on the front, chemistry set on the back. Not us.</dd>
+        <dt>Hashtags</dt><dd class="tg"><span class="chip">#PureMitti</span><span class="chip">#ReadTheLabel</span><span class="chip">#CleanBeautyCheck</span><span class="chip">#NonToxicLiving</span><span class="chip">#NaturalSkincare</span></dd>
+        <dt>Audio</dt><dd>Current trending POV/reaction sound <span class="confirm">[check week-of]</span>.</dd>
+        <dt>Repurpose</dt><dd>Cut native for TikTok first; re-crop for Reels; FB gets a slower text-led re-cut.</dd>
+      </dl>
+    </article>
+
+    <article class="brief" style="--pc:var(--p-proof)">
+      <div class="top"><div class="dnum">05</div><div class="tmeta"><div class="dw">Friday <span class="chip-p">Social Proof</span></div><div class="plats">Reels · TikTok · Shorts · Facebook</div></div></div>
+      <div class="hook"><div class="hl">Hook · 0–2s</div><div class="ht">"She didn't know we were filming her first reaction." <em>/ "Wait for her face at 0:07."</em></div></div>
+      <dl class="fields">
+        <dt>Shots</dt><dd>Customer UGC unboxing <span class="confirm">[confirm clip + consent]</span> → genuine smell/hold reaction → real review quote on screen → matching product close-up → scroll of 5-star reviews → Suniti's thank-you.</dd>
+        <dt>Script</dt><dd>"We didn't script this. This is a real first order. One customer wrote: 'ingredients that finally worked for my sensitive skin.' We're handmade, and every review means everything."</dd>
+        <dt>CTA</dt><dd>Tag someone who needs real reviews, not paid ones.</dd>
+        <dt>Caption</dt><dd class="cap">Not an ad. Just her honest reaction.</dd>
+        <dt>Hashtags</dt><dd class="tg"><span class="chip">#PureMitti</span><span class="chip">#RealReviews</span><span class="chip">#CustomerLove</span><span class="chip">#UGC</span><span class="chip">#HandmadeWithLove</span></dd>
+        <dt>Audio</dt><dd>Heartfelt acoustic trend sound, or original voiceover.</dd>
+        <dt>Repurpose</dt><dd>Vertical UGC is platform-agnostic; FB holds the review card 2–3s longer.</dd>
+      </dl>
+    </article>
+
+    <article class="brief" style="--pc:var(--p-sustain)">
+      <div class="top"><div class="dnum">06</div><div class="tmeta"><div class="dw">Saturday <span class="chip-p">Sustainability</span></div><div class="plats">Reels · TikTok · Shorts · Facebook</div></div></div>
+      <div class="hook"><div class="hl">Hook · 0–2s</div><div class="ht">"That plastic bottle outlives your grandkids." <em>/ "This bottle will exist longer than you will."</em></div></div>
+      <dl class="fields">
+        <dt>Shots</dt><dd>Ominous zoom on a plastic body-wash bottle → stat overlay <span class="confirm">[confirm stat + source]</span> → swipe-transition bottle to trash → Pure Mitti bar takes its place → wrap in compostable packaging <span class="confirm">[confirm material]</span> → "1 bar ≈ 3 bottles."</dd>
+        <dt>Script</dt><dd>"This bottle will still be here long after we're gone. One easy swap: trade liquid wash for a bar. Handmade, plastic-free, and one bar replaces two to three bottles. Same clean, without the forever-plastic."</dd>
+        <dt>CTA</dt><dd>Make the swap — first bar linked in bio.</dd>
+        <dt>Caption</dt><dd class="cap">Your body wash bottle will outlive you. Swap it before it outlives your grandkids too.</dd>
+        <dt>Hashtags</dt><dd class="tg"><span class="chip">#PureMitti</span><span class="chip">#PlasticFreeLiving</span><span class="chip">#SustainableSwap</span><span class="chip">#ZeroWasteBeauty</span><span class="chip">#EcoFriendlySkincare</span></dd>
+        <dt>Audio</dt><dd>Trending reveal-transition sound, or original voiceover.</dd>
+        <dt>Repurpose</dt><dd>Clean shelf background reuses across all four; FB/Shorts hold the stat 1s longer.</dd>
+      </dl>
+    </article>
+
+    <article class="brief" style="--pc:var(--p-offer)">
+      <div class="top"><div class="dnum">07</div><div class="tmeta"><div class="dw">Sunday <span class="chip-p">Soft Offer</span></div><div class="plats">Reels · TikTok · Shorts · Facebook</div></div></div>
+      <div class="hook"><div class="hl">Hook · 0–2s</div><div class="ht">"You've watched us all week. Here's your invite." <em>/ "If you've been curious, this is us asking you to just try it."</em></div></div>
+      <dl class="fields">
+        <dt>Shots</dt><dd>Fast recap montage (workshop, ingredients, Suniti, cutting) → warm to-camera → gift-ready wrap → box on a doorstep → puremitti.com on a phone → a wave.</dd>
+        <dt>Script</dt><dd>"This week you met me, saw how we make every bar, and heard from real customers. No countdown clock — just an honest invitation. If you've been curious about Pure Mitti, this is your sign to try it."</dd>
+        <dt>CTA</dt><dd>Shop puremitti.com — link in bio.</dd>
+        <dt>Caption</dt><dd class="cap">No fake urgency. Just: come try what we've shown you all week.</dd>
+        <dt>Hashtags</dt><dd class="tg"><span class="chip">#PureMitti</span><span class="chip">#ShopSmall</span><span class="chip">#TryPureMitti</span><span class="chip">#CleanBeauty</span><span class="chip">#HandmadeSoap</span></dd>
+        <dt>Audio</dt><dd>Warm acoustic "soft sell" sound, or original voiceover.</dd>
+        <dt>Repurpose</dt><dd>Montage pulls from Mon–Sat footage — only Suniti's close is new. FB holds the website longer.</dd>
+      </dl>
+    </article>
+
+    <div class="weekhead"><span class="wn">Week 2</span><h3>The daily ritual</h3><span class="th">education → desire</span></div>
+
+    <article class="brief" style="--pc:var(--p-edu)">
+      <div class="top"><div class="dnum">08</div><div class="tmeta"><div class="dw">Monday <span class="chip-p">Education</span></div><div class="plats">Reels · TikTok · Shorts · Facebook</div></div></div>
+      <div class="hook"><div class="hl">Hook · 0–2s</div><div class="ht">"You've been using your soap bar wrong this whole time." <em>/ "You're probably wasting half this bar."</em></div></div>
+      <dl class="fields">
+        <dt>Shots</dt><dd>Bar melting in a water puddle ("this is how bars die") → ridged draining dish → lather-in-hands vs washcloth demo → "3 rules for a bar that lasts 2× longer" → linen storage pouch.</dd>
+        <dt>Script</dt><dd>"If your soap turns to mush in two weeks, it's not the soap — it's the dish. Rule one: a draining dish. Two: let it dry between uses. Three: lather in your hands, not under the tap. Do this and one bar outlasts three bottles."</dd>
+        <dt>CTA</dt><dd>Comment "DISH" for our favorite soap-dish pairing.</dd>
+        <dt>Caption</dt><dd class="cap">Your soap bar is dying and it's not its fault. Save this for your next shower.</dd>
+        <dt>Hashtags</dt><dd class="tg"><span class="chip">#PureMitti</span><span class="chip">#SoapBarTips</span><span class="chip">#ZeroWasteSwap</span><span class="chip">#NaturalSkincare</span><span class="chip">#SustainableLiving</span></dd>
+        <dt>Audio</dt><dd>Trending "life hack" sound with a beat drop on "Rule one."</dd>
+        <dt>Repurpose</dt><dd>Full sequence for Reels/TikTok/Shorts; FB extends the intro 2s with burned-in captions.</dd>
+      </dl>
+    </article>
+
+    <article class="brief" style="--pc:var(--p-asmr)">
+      <div class="top"><div class="dnum">09</div><div class="tmeta"><div class="dw">Tuesday <span class="chip-p">ASMR · Anchor</span></div><div class="plats">Reels · TikTok · Shorts · Facebook</div></div></div>
+      <div class="hook"><div class="hl">Hook · two options</div><div class="ht">A — "This is what a soap bar sounds like before it touches water." <em>/</em> B — "We cut this bar so you don't have to imagine the smell. Sound on."</div></div>
+      <dl class="fields">
+        <dt>Shots</dt><dd>Macro knife through the loaf → dried neem + turmeric on the cut face → pan across clay/charcoal marbling → bar into palm (soft thud) → first lather in extreme close-up → hero with mist + logo stamp.</dd>
+        <dt>Script</dt><dd>No VO — ambient ASMR only. Text: "Neem + Turmeric Bar" → "Hand-cut, small batch" → "Ayurvedic ingredients, zero synthetic fragrance" → "puremitti.com".</dd>
+        <dt>CTA</dt><dd>Shop this bar — link in bio.</dd>
+        <dt>Caption</dt><dd class="cap">The sound of a soap bar that's never met a synthetic fragrance. Headphones recommended.</dd>
+        <dt>Hashtags</dt><dd class="tg"><span class="chip">#PureMitti</span><span class="chip">#SoapASMR</span><span class="chip">#NeemAndTurmeric</span><span class="chip">#HandmadeSoap</span><span class="chip">#SmallBatchSkincare</span></dd>
+        <dt>Audio</dt><dd>Original raw ASMR — the sound is the point.</dd>
+        <dt>Repurpose</dt><dd>Same footage everywhere; Shorts/FB add ingredient captions for muted scrollers.</dd>
+      </dl>
+    </article>
+
+    <article class="brief" style="--pc:var(--p-founder)">
+      <div class="top"><div class="dnum">10</div><div class="tmeta"><div class="dw">Wednesday <span class="chip-p">Founder</span></div><div class="plats">Reels · TikTok · Shorts · Facebook</div></div></div>
+      <div class="hook"><div class="hl">Hook · 0–2s</div><div class="ht">"I quit a six-figure ad job to make soap in my kitchen." <em>/ "Everyone thought I was insane for leaving advertising."</em></div></div>
+      <dl class="fields">
+        <dt>Shots</dt><dd>Suniti in studio, hands dusty with clay → corporate b-roll flash <span class="confirm">[confirm asset]</span> → pouring batter → stamping bars one by one → smelling a fresh batch → "Basking Ridge, NJ · handmade, still."</dd>
+        <dt>Script</dt><dd>"A decade in advertising selling other people's products. Then I read the labels on my own skincare and couldn't pronounce half of it. So I quit and taught myself to make soap the way my grandmother would — real oils, real clay. Every bar still poured and cut by hand here."</dd>
+        <dt>CTA</dt><dd>Follow to watch the next batch get made.</dd>
+        <dt>Caption</dt><dd class="cap">I traded ad campaigns for cold-process soap. Best decision I never planned to make.</dd>
+        <dt>Hashtags</dt><dd class="tg"><span class="chip">#PureMitti</span><span class="chip">#FounderStory</span><span class="chip">#WomenInBusiness</span><span class="chip">#HandmadeInNJ</span><span class="chip">#CleanLiving</span></dd>
+        <dt>Audio</dt><dd>Soft acoustic "founder story" sound under the VO.</dd>
+        <dt>Repurpose</dt><dd>Full VO for IG/FB; punchier 15s hook-forward cut for TikTok/Shorts.</dd>
+      </dl>
+    </article>
+
+    <article class="brief" style="--pc:var(--p-trend)">
+      <div class="top"><div class="dnum">11</div><div class="tmeta"><div class="dw">Thursday <span class="chip-p">Trend</span></div><div class="plats">Reels · TikTok · Shorts · Facebook</div></div></div>
+      <div class="hook"><div class="hl">Hook · 0–2s</div><div class="ht">"POV: your skincare shelf but make it Ayurvedic era." <em>/ "Rating my routine's main-character energy."</em></div></div>
+      <dl class="fields">
+        <dt>Shots</dt><dd>Trending POV transition into a shelf reveal → "rate" the soap (10/10 no fake fragrance) → clay mask + texture swipe → hair oil pour → playful smell-test reaction → full-lineup end card.</dd>
+        <dt>Script</dt><dd>"Rating my Ayurvedic shelf so you don't have to guess. Soap — ten out of ten, smells like a spice market, not a candle aisle. Clay mask — my skin genuinely did something. The oil's cheating; it's a ritual in a bottle."</dd>
+        <dt>CTA</dt><dd>Which one should I review next?</dd>
+        <dt>Caption</dt><dd class="cap">Rating my skincare shelf, Ayurveda edition. No fake fragrance survived.</dd>
+        <dt>Hashtags</dt><dd class="tg"><span class="chip">#PureMitti</span><span class="chip">#GRWM</span><span class="chip">#SkincareRoutine</span><span class="chip">#AyurvedaSkincare</span><span class="chip">#CleanBeautyTok</span></dd>
+        <dt>Audio</dt><dd>Current trending "rating/POV" sound <span class="confirm">[check Discover week-of]</span>.</dd>
+        <dt>Repurpose</dt><dd>Native trend cut for TikTok/Reels; Shorts/FB swap to a same-tempo royalty-free track with VO leading.</dd>
+      </dl>
+    </article>
+
+    <article class="brief" style="--pc:var(--p-proof)">
+      <div class="top"><div class="dnum">12</div><div class="tmeta"><div class="dw">Friday <span class="chip-p">Social Proof</span></div><div class="plats">Reels · TikTok · Shorts · Facebook</div></div></div>
+      <div class="hook"><div class="hl">Hook · 0–2s</div><div class="ht">"My skin cleared up and I changed nothing else — except this." <em>/ "'I'll never go back to drugstore soap' — real customer."</em></div></div>
+      <dl class="fields">
+        <dt>Shots</dt><dd>Scroll real reviews/DMs, names blurred <span class="confirm">[confirm testimonials + permission]</span> → UGC unboxing → applying product at home → exact quote over B-roll → team reacting → "1,000+ 5-star reviews" <span class="confirm">[confirm count]</span>.</dd>
+        <dt>Script</dt><dd>"We didn't write this review — she did. 'My eczema calmed down within two weeks and I finally found a soap that doesn't strip my skin.' We can't promise the same for everyone, but this is why we do what we do."</dd>
+        <dt>CTA</dt><dd>Tag someone who needs to make the switch.</dd>
+        <dt>Caption</dt><dd class="cap">We didn't write this one. She did.</dd>
+        <dt>Hashtags</dt><dd class="tg"><span class="chip">#PureMitti</span><span class="chip">#CustomerReview</span><span class="chip">#RealResults</span><span class="chip">#UGC</span><span class="chip">#NaturalSoap</span></dd>
+        <dt>Audio</dt><dd>Gentle emotional trend sound — let the words read.</dd>
+        <dt>Repurpose</dt><dd>Same cut across IG/FB/TikTok; Shorts holds the star-rating card 1s longer.</dd>
+      </dl>
+    </article>
+
+    <article class="brief" style="--pc:var(--p-sustain)">
+      <div class="top"><div class="dnum">13</div><div class="tmeta"><div class="dw">Saturday <span class="chip-p">Sustainability</span></div><div class="plats">Reels · TikTok · Shorts · Facebook</div></div></div>
+      <div class="hook"><div class="hl">Hook · 0–2s</div><div class="ht">"Your plastic body wash bottle will outlive your grandkids." <em>/ "One swap that kills 3 plastic bottles a year."</em></div></div>
+      <dl class="fields">
+        <dt>Shots</dt><dd>Pile of empty plastic bottles → decomposition stat <span class="confirm">[confirm stat]</span> → single bar beside the pile (size contrast) → wrap in paper packaging → bar in the shower, zero plastic → "1 bar = 2–3 bottles."</dd>
+        <dt>Script</dt><dd>"This is three months of body wash in plastic. This is three months as Pure Mitti bars — same routine, zero plastic, compostable packaging. It's not about doing everything perfectly. It's about swapping the one thing you use every day."</dd>
+        <dt>CTA</dt><dd>Make the swap — bars linked in bio.</dd>
+        <dt>Caption</dt><dd class="cap">Same shower routine. Zero plastic bottles.</dd>
+        <dt>Hashtags</dt><dd class="tg"><span class="chip">#PureMitti</span><span class="chip">#ZeroWasteSwap</span><span class="chip">#PlasticFreeLiving</span><span class="chip">#EcoSwap</span><span class="chip">#SoapNotBottles</span></dd>
+        <dt>Audio</dt><dd>Trending "swap/transformation" sound, cuts on the bottle-to-bar reveal.</dd>
+        <dt>Repurpose</dt><dd>One vertical shoot; FB/Shorts add an on-screen source citation for credibility.</dd>
+      </dl>
+    </article>
+
+    <article class="brief" style="--pc:var(--p-offer)">
+      <div class="top"><div class="dnum">14</div><div class="tmeta"><div class="dw">Sunday <span class="chip-p">Soft Offer</span></div><div class="plats">Reels · TikTok · Shorts · Facebook</div></div></div>
+      <div class="hook"><div class="hl">Hook · 0–2s</div><div class="ht">"Sunday reset: the 3 products actually worth restocking." <em>/ "If you buy one Pure Mitti thing this month, make it this."</em></div></div>
+      <dl class="fields">
+        <dt>Shots</dt><dd>Calm Sunday counter, soft light → lay out the ritual kit (soap, clay mask, hair oil) → quick wash/mask/oil montage → "Ritual Reset Kit" <span class="confirm">[confirm offer terms]</span> → flat-lay with link card → gentle to-camera close.</dd>
+        <dt>Script</dt><dd>"Sunday reset, Pure Mitti style. Wash, mask, oil — that's the whole ritual. We bundled the three products people restock most into one kit, and this week it's a little easier to try. No gimmicks, just the essentials."</dd>
+        <dt>CTA</dt><dd>Shop the Ritual Reset Kit — link in bio.</dd>
+        <dt>Caption</dt><dd class="cap">Sunday reset, the Pure Mitti way. Wash. Mask. Oil.</dd>
+        <dt>Hashtags</dt><dd class="tg"><span class="chip">#PureMitti</span><span class="chip">#SundayReset</span><span class="chip">#SelfCareSunday</span><span class="chip">#AyurvedaRitual</span><span class="chip">#ShopSmall</span></dd>
+        <dt>Audio</dt><dd>Calm lo-fi "Sunday morning" trend sound.</dd>
+        <dt>Repurpose</dt><dd>Full calm cut for IG/FB; tighten holds ~20% for TikTok/Shorts.</dd>
+      </dl>
+    </article>
+
+    <div class="weekhead"><span class="wn">Week 3</span><h3>Proof &amp; the swap</h3><span class="th">trust → conviction</span></div>
+
+    <article class="brief" style="--pc:var(--p-edu)">
+      <div class="top"><div class="dnum">15</div><div class="tmeta"><div class="dw">Monday <span class="chip-p">Education</span></div><div class="plats">Reels · TikTok · Shorts · Facebook</div></div></div>
+      <div class="hook"><div class="hl">Hook · 0–2s</div><div class="ht">"Your 'natural' soap might have one ingredient that isn't." <em>/ "Let's read the label together — you'll be surprised."</em></div></div>
+      <dl class="fields">
+        <dt>Shots</dt><dd>Flip a mass-market "natural" bar → underline a long chemical name → our bar's short list, read aloud → split-screen of both labels → hold both bars, "now you know what to look for."</dd>
+        <dt>Script</dt><dd>"'Natural' isn't a regulated word — brands can call almost anything natural. The trick: if you can't picture the ingredient in your kitchen, it's probably not traditional. Ours lists oils, clay and herbs you'd recognize — because that's what Ayurvedic skincare has used for centuries."</dd>
+        <dt>CTA</dt><dd>Flip your soap over right now — comment what you find.</dd>
+        <dt>Caption</dt><dd class="cap">Reading soap labels is a skill nobody taught us. Here's the 10-second trick.</dd>
+        <dt>Hashtags</dt><dd class="tg"><span class="chip">#PureMitti</span><span class="chip">#ReadTheLabel</span><span class="chip">#IngredientEducation</span><span class="chip">#NaturalSoap</span><span class="chip">#NonToxicLiving</span></dd>
+        <dt>Audio</dt><dd>Low-key educational "whiteboard reveal" trend sound.</dd>
+        <dt>Repurpose</dt><dd>Full cut with label callouts everywhere; Shorts adds title "What's really in your soap?"; FB expands the caption into a tip.</dd>
+      </dl>
+    </article>
+
+    <article class="brief" style="--pc:var(--p-asmr)">
+      <div class="top"><div class="dnum">16</div><div class="tmeta"><div class="dw">Tuesday <span class="chip-p">ASMR</span></div><div class="plats">Reels · TikTok · Shorts · Facebook</div></div></div>
+      <div class="hook"><div class="hl">Hook · 0–2s</div><div class="ht">"Wait for the cut." <em>/ (no VO — on-screen text only)</em></div></div>
+      <dl class="fields">
+        <dt>Shots</dt><dd>Whole bar on a board, natural light → wire cutter poised → slow-mo cut reveals the swirl/clay layer → extreme close-up of the cut face → water drizzle + lather → bar resting beside raw clay, herbs, oil.</dd>
+        <dt>Script</dt><dd>No VO. Text: "Handmade. Small-batch. Basking Ridge, NJ." → "Cut to order — no two bars identical." → "Clay + [herb] inside" <span class="confirm">[confirm]</span> → "Traditionally used to help soothe skin."</dd>
+        <dt>CTA</dt><dd>Which swirl pattern is your favorite?</dd>
+        <dt>Caption</dt><dd class="cap">The most satisfying 15 seconds of your day. No two bars alike.</dd>
+        <dt>Hashtags</dt><dd class="tg"><span class="chip">#PureMitti</span><span class="chip">#SoapCutting</span><span class="chip">#ASMR</span><span class="chip">#ClaySoap</span><span class="chip">#SatisfyingVideo</span></dd>
+        <dt>Audio</dt><dd>Native ASMR (knife-through-soap) — no music.</dd>
+        <dt>Repurpose</dt><dd>4K vertical; IG/TikTok/Shorts pure sound-on; FB adds captions for muted autoplay.</dd>
+      </dl>
+    </article>
+
+    <article class="brief" style="--pc:var(--p-founder)">
+      <div class="top"><div class="dnum">17</div><div class="tmeta"><div class="dw">Wednesday <span class="chip-p">Founder</span></div><div class="plats">Reels · TikTok · Shorts · Facebook</div></div></div>
+      <div class="hook"><div class="hl">Hook · 0–2s</div><div class="ht">"I quit advertising to sell soap. Here's why." <em>/ "I spent 15 years in ads selling things I didn't believe in."</em></div></div>
+      <dl class="fields">
+        <dt>Shots</dt><dd>Suniti into workshop, apron on → corporate-era flash <span class="confirm">[confirm photo]</span> → mixing a batch → talking-head "why" → pouring into molds → holding a finished bar to the light.</dd>
+        <dt>Script</dt><dd>"Years in advertising, convincing people to buy things I wouldn't put on my own skin. Then I started making soap in my kitchen with my grandmother's ingredients. That batch became Pure Mitti. The rule hasn't changed: if I wouldn't use it on my kids, it doesn't go in the bar."</dd>
+        <dt>CTA</dt><dd>Follow for more of the story — shop the first product I ever made.</dd>
+        <dt>Caption</dt><dd class="cap">From ad exec to soap maker — the honest version, not the highlight reel.</dd>
+        <dt>Hashtags</dt><dd class="tg"><span class="chip">#PureMitti</span><span class="chip">#FounderStory</span><span class="chip">#WomenOwnedBusiness</span><span class="chip">#AyurvedaInspired</span><span class="chip">#NJSmallBusiness</span></dd>
+        <dt>Audio</dt><dd>Original voiceover — her real voice is the point.</dd>
+        <dt>Repurpose</dt><dd>Trim to :20 for Reels/TikTok/Shorts; FB runs a :45–60 cut.</dd>
+      </dl>
+    </article>
+
+    <article class="brief" style="--pc:var(--p-trend)">
+      <div class="top"><div class="dnum">18</div><div class="tmeta"><div class="dw">Thursday <span class="chip-p">Trend</span></div><div class="plats">Reels · TikTok · Shorts · Facebook</div></div></div>
+      <div class="hook"><div class="hl">Hook · 0–2s</div><div class="ht">"POV: you finally switch your bathroom shelf to non-toxic." <em>/ (trending GRWM format)</em></div></div>
+      <dl class="fields">
+        <dt>Shots</dt><dd>Trending hand-swipe start (old products visible) → snap-transition to the Pure Mitti lineup → soap pickup + satisfied smell → haircare pour → clay texture → final pose, full shelf reveal.</dd>
+        <dt>Script</dt><dd>On-screen text synced to the beat: "Old shelf" → "New shelf" → "Ingredients I can pronounce" → "Basking Ridge, NJ made" → "Try it yourself."</dd>
+        <dt>CTA</dt><dd>Duet this with your own shelf swap.</dd>
+        <dt>Caption</dt><dd class="cap">The glow-up nobody talks about: your bathroom shelf.</dd>
+        <dt>Hashtags</dt><dd class="tg"><span class="chip">#PureMitti</span><span class="chip">#ShelfSwap</span><span class="chip">#GRWM</span><span class="chip">#NonToxicHome</span><span class="chip">#CleanBeauty</span></dd>
+        <dt>Audio</dt><dd>Current trending transition sound <span class="confirm">[pull top audio week-of]</span>.</dd>
+        <dt>Repurpose</dt><dd>Native trend edit for IG/TikTok/Shorts; FB swaps to a royalty-free track, same cut timing.</dd>
+      </dl>
+    </article>
+
+    <article class="brief" style="--pc:var(--p-proof)">
+      <div class="top"><div class="dnum">19</div><div class="tmeta"><div class="dw">Friday <span class="chip-p">Social Proof · Anchor</span></div><div class="plats">Reels · TikTok · Shorts · Facebook</div></div></div>
+      <div class="hook"><div class="hl">Hook · two options</div><div class="ht">A — "I didn't write this review. A real customer did." <em>/</em> B — the review's most striking line, read verbatim <span class="confirm">[use a real review]</span>.</div></div>
+      <dl class="fields">
+        <dt>Shots</dt><dd>Zoom on the actual review on-screen <span class="confirm">[real review]</span> → team reading it aloud, genuine reaction → the exact product mentioned, macro → product in use → 2–3 more real snippets → "thank you" card.</dd>
+        <dt>Script</dt><dd>"We don't write our reviews — our customers do. [Read the real quote.] This is why we do it. Every bar, every batch, made the same way since day one — because it's real people's skin we're thinking about."</dd>
+        <dt>CTA</dt><dd>Read more real reviews at puremitti.com — or leave your own.</dd>
+        <dt>Caption</dt><dd class="cap">We didn't write this. Our customer did.</dd>
+        <dt>Hashtags</dt><dd class="tg"><span class="chip">#PureMitti</span><span class="chip">#CustomerReview</span><span class="chip">#RealResults</span><span class="chip">#UGC</span><span class="chip">#SmallBusinessLove</span></dd>
+        <dt>Audio</dt><dd>Original voiceover, sincere — soft underscore only.</dd>
+        <dt>Repurpose</dt><dd>Full review text for IG/FB; trimmed quote-only 15s for TikTok/Shorts.</dd>
+      </dl>
+    </article>
+
+    <article class="brief" style="--pc:var(--p-sustain)">
+      <div class="top"><div class="dnum">20</div><div class="tmeta"><div class="dw">Saturday <span class="chip-p">Sustainability</span></div><div class="plats">Reels · TikTok · Shorts · Facebook</div></div></div>
+      <div class="hook"><div class="hl">Hook · 0–2s</div><div class="ht">"This bottle takes 450 years to break down. This bar takes 6 weeks." <em>/ "One swap, zero plastic."</em></div></div>
+      <dl class="fields">
+        <dt>Shots</dt><dd>Plastic bottle held up → decomposition stat overlay <span class="confirm">[confirm stat + source]</span> → our bar, paper packaging → split-screen bin vs bar → bar in the shower → shelf with only bars + compostable packaging.</dd>
+        <dt>Script</dt><dd>"The average body wash bottle takes hundreds of years to break down — and most people finish one a month. A bar skips the bottle entirely. Compostable packaging, handmade, no plastic pump, no microplastic runoff. One swap. That's it."</dd>
+        <dt>CTA</dt><dd>Swap one bottle this month — start with the bar in bio.</dd>
+        <dt>Caption</dt><dd class="cap">Your body wash bottle will outlive you. This bar won't.</dd>
+        <dt>Hashtags</dt><dd class="tg"><span class="chip">#PureMitti</span><span class="chip">#SustainableSwap</span><span class="chip">#PlasticFreeBeauty</span><span class="chip">#ZeroWaste</span><span class="chip">#BarSoap</span></dd>
+        <dt>Audio</dt><dd>Trending "one swap that changed everything" format.</dd>
+        <dt>Repurpose</dt><dd>Split-screen works native on all four; FB spells the stat out in the caption.</dd>
+      </dl>
+    </article>
+
+    <article class="brief" style="--pc:var(--p-offer)">
+      <div class="top"><div class="dnum">21</div><div class="tmeta"><div class="dw">Sunday <span class="chip-p">Soft Offer</span></div><div class="plats">Reels · TikTok · Shorts · Facebook</div></div></div>
+      <div class="hook"><div class="hl">Hook · 0–2s</div><div class="ht">"If you've been on the fence all week, this is your sign." <em>/ "Everything we showed you this week, in one box."</em></div></div>
+      <dl class="fields">
+        <dt>Shots</dt><dd>Recap montage (label read, ASMR cut, founder, review) → assemble a starter set → neat flat-lay in natural light → team holds the bundle out → offer overlay <span class="confirm">[confirm terms]</span> → product at home, cozy setting.</dd>
+        <dt>Script</dt><dd>"This week we showed you what's really in your soap, how we make it, why we started, and what customers say. If you've been curious but haven't tried it — this is your sign. We put together a starter set so you can. No pressure, just an honest invitation."</dd>
+        <dt>CTA</dt><dd>Shop the starter set — link in bio.</dd>
+        <dt>Caption</dt><dd class="cap">Been on the fence all week? Here's your sign.</dd>
+        <dt>Hashtags</dt><dd class="tg"><span class="chip">#PureMitti</span><span class="chip">#StarterSet</span><span class="chip">#ShopSmall</span><span class="chip">#CleanSkincare</span><span class="chip">#TryItYourself</span></dd>
+        <dt>Audio</dt><dd>Original voiceover over soft, non-hypey music.</dd>
+        <dt>Repurpose</dt><dd>Recap structure edits clean for all four; Shorts adds a product-page end card; FB uses a native "Shop Now" button.</dd>
+      </dl>
+    </article>
+
+    <div class="weekhead"><span class="wn">Week 4</span><h3>Community &amp; gifting</h3><span class="th">conversion → loyalty</span></div>
+
+    <article class="brief" style="--pc:var(--p-edu)">
+      <div class="top"><div class="dnum">22</div><div class="tmeta"><div class="dw">Monday <span class="chip-p">Education</span></div><div class="plats">Reels · TikTok · Shorts · Facebook</div></div></div>
+      <div class="hook"><div class="hl">Hook · 0–2s</div><div class="ht">"Is your soap actually soap?" <em>/ "Most bars on your shelf aren't legally allowed to be called soap."</em></div></div>
+      <dl class="fields">
+        <dt>Shots</dt><dd>Our bar next to a mass-market "beauty bar" box → flip the box to read it → "detergent bar" vs our short list → macro of natural-clay color → Suniti explaining saponification → bar on a simple dish.</dd>
+        <dt>Script</dt><dd>"Most 'soap' is actually a detergent bar — not required to legally be called soap. Real soap is saponification: oils plus lye, nothing else. Ours is handmade, small-batch, every ingredient named <span class="confirm">[confirm count]</span>. If you can't pronounce it, we probably didn't put it in ours."</dd>
+        <dt>CTA</dt><dd>Comment "LABEL" for our free ingredient-reading guide.</dd>
+        <dt>Caption</dt><dd class="cap">Your "soap" might legally be a detergent. Here's the difference.</dd>
+        <dt>Hashtags</dt><dd class="tg"><span class="chip">#PureMitti</span><span class="chip">#NaturalSoap</span><span class="chip">#IngredientTransparency</span><span class="chip">#SoapMaking</span><span class="chip">#CleanBeauty</span></dd>
+        <dt>Audio</dt><dd>Trending "explain it to me like I'm 5" sound, or original voiceover.</dd>
+        <dt>Repurpose</dt><dd>Full cut for IG/TikTok/Shorts (+ end-screen card); FB trims to a 15s hook+payoff.</dd>
+      </dl>
+    </article>
+
+    <article class="brief" style="--pc:var(--p-asmr)">
+      <div class="top"><div class="dnum">23</div><div class="tmeta"><div class="dw">Tuesday <span class="chip-p">ASMR</span></div><div class="plats">Reels · TikTok · Shorts · Facebook</div></div></div>
+      <div class="hook"><div class="hl">Hook · 0–2s</div><div class="ht">"Wait for the cut." <em>/ (no VO — pure ASMR open)</em></div></div>
+      <dl class="fields">
+        <dt>Shots</dt><dd>Overhead uncut bar, knife enters → slow-mo cut, cross-section reveal → close-mic'd slice + separation → fingers press the cut face → logo stamp, plated → bar sliding into kraft packaging.</dd>
+        <dt>Script</dt><dd>No VO. Text: "Small batch." → "Hand-poured with [clay type]" <span class="confirm">[confirm]</span> → "Cut fresh this week." → "Pure Mitti — soap you can actually pronounce."</dd>
+        <dt>CTA</dt><dd>Shop this bar — link in bio, while the batch lasts.</dd>
+        <dt>Caption</dt><dd class="cap">The most satisfying 20 seconds of your feed today. Hand-poured and cut this week.</dd>
+        <dt>Hashtags</dt><dd class="tg"><span class="chip">#PureMitti</span><span class="chip">#SoapCutting</span><span class="chip">#SoapASMR</span><span class="chip">#SmallBatchSoap</span><span class="chip">#NJMade</span></dd>
+        <dt>Audio</dt><dd>Raw ASMR — no trending overlay.</dd>
+        <dt>Repurpose</dt><dd>Shoot once in 4K vertical; FB adds a 3-word text hook for muted starts.</dd>
+      </dl>
+    </article>
+
+    <article class="brief" style="--pc:var(--p-founder)">
+      <div class="top"><div class="dnum">24</div><div class="tmeta"><div class="dw">Wednesday <span class="chip-p">Founder</span></div><div class="plats">Reels · TikTok · Shorts · Facebook</div></div></div>
+      <div class="hook"><div class="hl">Hook · 0–2s</div><div class="ht">"I left a six-figure ad job to sell soap in my garage." <em>/ same on-screen</em></div></div>
+      <dl class="fields">
+        <dt>Shots</dt><dd>Suniti into workshop, morning light → old corporate headshot flash <span class="confirm">[confirm]</span> → mixing by hand → talking-head health/family moment → shelves of curing soap → smiling, holding a finished bar.</dd>
+        <dt>Script</dt><dd>"I spent [X years] <span class="confirm">[confirm]</span> in advertising telling people what to buy. Then I read what was actually in the things I bought — and couldn't unsee it. So I quit and started making soap in my garage, rooted in Ayurveda, the tradition I grew up around. Every bar still starts with me, checking each batch by hand."</dd>
+        <dt>CTA</dt><dd>Follow along — new batches drop every week.</dd>
+        <dt>Caption</dt><dd class="cap">From the ad industry to my garage — the honest story of why Pure Mitti exists.</dd>
+        <dt>Hashtags</dt><dd class="tg"><span class="chip">#PureMitti</span><span class="chip">#FounderStory</span><span class="chip">#WomenOwnedBusiness</span><span class="chip">#AyurvedaInspired</span><span class="chip">#BaskingRidgeNJ</span></dd>
+        <dt>Audio</dt><dd>Soft emotional trend sound under the VO, or original.</dd>
+        <dt>Repurpose</dt><dd>Full :28–30 for IG/TikTok/Shorts; FB uses a :20 leading with the corporate-to-garage line.</dd>
+      </dl>
+    </article>
+
+    <article class="brief" style="--pc:var(--p-trend)">
+      <div class="top"><div class="dnum">25</div><div class="tmeta"><div class="dw">Thursday <span class="chip-p">Trend</span></div><div class="plats">Reels · TikTok · Shorts · Facebook</div></div></div>
+      <div class="hook"><div class="hl">Hook · 0–2s</div><div class="ht">"POV: your skincare shelf finally makes sense." <em>/ (trending audio leads)</em></div></div>
+      <dl class="fields">
+        <dt>Shots</dt><dd>Trending snap-transition start → reveal the Pure Mitti shelf → soap highlight on the beat → skincare highlight → haircare highlight → freeze-frame with logo card.</dd>
+        <dt>Script</dt><dd>No dialogue — text synced to the beat: "when your whole routine is finally non-toxic" → "no fragrance mystery" → "no 30-ingredient list" → "just… mitti."</dd>
+        <dt>CTA</dt><dd>Tag someone who needs a routine reset.</dd>
+        <dt>Caption</dt><dd class="cap">POV: you finally cleaned out the mystery ingredients.</dd>
+        <dt>Hashtags</dt><dd class="tg"><span class="chip">#PureMitti</span><span class="chip">#GRWM</span><span class="chip">#CleanRoutine</span><span class="chip">#NonToxicSkincare</span><span class="chip">#CleanGirlAesthetic</span></dd>
+        <dt>Audio</dt><dd>Current trending sound <span class="confirm">[confirm same-week]</span>.</dd>
+        <dt>Repurpose</dt><dd>Beat-matched native for IG/TikTok/Shorts; FB re-cuts as a static-caption version.</dd>
+      </dl>
+    </article>
+
+    <article class="brief" style="--pc:var(--p-proof)">
+      <div class="top"><div class="dnum">26</div><div class="tmeta"><div class="dw">Friday <span class="chip-p">Social Proof</span></div><div class="plats">Reels · TikTok · Shorts · Facebook</div></div></div>
+      <div class="hook"><div class="hl">Hook · 0–2s</div><div class="ht">"My eczema-prone skin finally calmed down." <em>/ (customer's own words on screen)</em> <span class="confirm">[use a real quote]</span></div></div>
+      <dl class="fields">
+        <dt>Shots</dt><dd>UGC clip, reposted with permission <span class="confirm">[confirm rights]</span> → the customer's actual quote overlaid → product in use → montage of 3–4 more reviews/DMs → team reacting warmly → "thank you" card.</dd>
+        <dt>Script</dt><dd>"We don't say our products work — our customers do. [Name] said their skin felt calmer within a week of switching. Traditionally, ingredients like [ingredient] <span class="confirm">[confirm]</span> have been used to help soothe skin — and hearing it help in real life is everything."</dd>
+        <dt>CTA</dt><dd>Share your Pure Mitti story — tag us to be featured.</dd>
+        <dt>Caption</dt><dd class="cap">"My skin finally calmed down." — one of our favorite messages this month.</dd>
+        <dt>Hashtags</dt><dd class="tg"><span class="chip">#PureMitti</span><span class="chip">#CustomerLove</span><span class="chip">#UGC</span><span class="chip">#RealResults</span><span class="chip">#SmallBatchBeauty</span></dd>
+        <dt>Audio</dt><dd>Warm uplifting trend sound, or original VO with customer audio mixed.</dd>
+        <dt>Repurpose</dt><dd>Full cut for IG/TikTok/Shorts; FB runs a longer 30s testimonial version.</dd>
+      </dl>
+    </article>
+
+    <article class="brief" style="--pc:var(--p-sustain)">
+      <div class="top"><div class="dnum">27</div><div class="tmeta"><div class="dw">Saturday <span class="chip-p">Sustainability</span></div><div class="plats">Reels · TikTok · Shorts · Facebook</div></div></div>
+      <div class="hook"><div class="hl">Hook · 0–2s</div><div class="ht">"Swap this, not that." <em>/ "One swap in your bathroom cuts more plastic than you think."</em></div></div>
+      <dl class="fields">
+        <dt>Shots</dt><dd>Plastic bottle into the bin → our bar beside it (contrast) → minimal packaging close-up → stat overlay <span class="confirm">[confirm stat]</span> → shelf styled with 2–3 swaps → team holds the "swap kit."</dd>
+        <dt>Script</dt><dd>"Every plastic bottle you skip is one less in a landfill for [timeframe] <span class="confirm">[confirm]</span> years. One bar can replace multiple bottles of liquid wash — no pump, no microplastic formula, just a bar that lasts. Small swap, real impact — and it smells like something you'd actually want to use."</dd>
+        <dt>CTA</dt><dd>Start your swap — shop the bar that replaces the bottle.</dd>
+        <dt>Caption</dt><dd class="cap">One swap. Less plastic. Same routine.</dd>
+        <dt>Hashtags</dt><dd class="tg"><span class="chip">#PureMitti</span><span class="chip">#SustainableSwap</span><span class="chip">#PlasticFree</span><span class="chip">#ZeroWasteLiving</span><span class="chip">#SwapDontShop</span></dd>
+        <dt>Audio</dt><dd>Upbeat "satisfying swap" trend sound, or original VO.</dd>
+        <dt>Repurpose</dt><dd>Same cut across IG/TikTok/Shorts; FB pins the plastic-reduction stat as an overlay.</dd>
+      </dl>
+    </article>
+
+    <article class="brief" style="--pc:var(--p-offer)">
+      <div class="top"><div class="dnum">28</div><div class="tmeta"><div class="dw">Sunday <span class="chip-p">Offer · Month Anchor</span></div><div class="plats">Reels · TikTok · Shorts · Facebook</div></div></div>
+      <div class="hook"><div class="hl">Hook · two options</div><div class="ht">A — "Last weekend to get our bestseller gift set at this price." <em>/</em> B — "We sold out of this twice. It's back — for 48 hours."</div></div>
+      <dl class="fields">
+        <dt>Shots</dt><dd>Gift set styled — box open, tissue, reveal → close-up of each item → hands packing the set → before/after vs a big-box gift set → price + what's included overlay → final CTA with link/QR.</dd>
+        <dt>Script</dt><dd>"Our bestselling gift set is back for 48 hours — the one people ask for by name. Inside: [item 1], [item 2], [item 3] <span class="confirm">[confirm contents]</span> — handmade, non-toxic, wrapped and ready to give. It's sold out twice this year. Grab yours before it's gone."</dd>
+        <dt>CTA</dt><dd>Shop the gift set — 48 hours only, link in bio.</dd>
+        <dt>Caption</dt><dd class="cap">Back by popular demand — for 48 hours only.</dd>
+        <dt>Hashtags</dt><dd class="tg"><span class="chip">#PureMitti</span><span class="chip">#GiftSet</span><span class="chip">#CleanGifting</span><span class="chip">#ShopSmall</span><span class="chip">#NonToxicGifts</span></dd>
+        <dt>Audio</dt><dd>Higher-energy "shop this now" trend sound, or original VO with urgency pacing.</dd>
+        <dt>Repurpose</dt><dd>Master :30 for IG/TikTok/Shorts; FB gets a 15s hook+offer+CTA cut, boost-ready if running ads.</dd>
+      </dl>
+    </article>
+
+    <div class="weekhead"><span class="wn">Days 29–30</span><h3>Momentum &amp; the tease</h3><span class="th">carry it into next month</span></div>
+
+    <article class="brief" style="--pc:var(--p-founder)">
+      <div class="top"><div class="dnum">29</div><div class="tmeta"><div class="dw">Monday <span class="chip-p">Best-of / Recap</span></div><div class="plats">Reels · TikTok · Shorts · Facebook</div></div></div>
+      <div class="hook"><div class="hl">Hook · 0–2s</div><div class="ht">"You loved this one — so we're bringing it back." <em>/ "Our top video this month, in case you missed it."</em></div></div>
+      <dl class="fields">
+        <dt>Shots</dt><dd>Re-use the top-performing clip from Days 22–28 <span class="confirm">[confirm which]</span> → "Our #1 video this month" title still → fresh 2-second hook re-edit → one new "and it's still selling out" shot → "more like this all month" card → 3 one-second highlight flashes.</dd>
+        <dt>Script</dt><dd>"This was the video you couldn't stop watching — so here it is again, in case your algorithm missed it. [Re-state the original hook/payoff.] If you loved this, there's a whole month of stories and swaps waiting on our page."</dd>
+        <dt>CTA</dt><dd>Follow if you missed it the first time.</dd>
+        <dt>Caption</dt><dd class="cap">You asked to see this one again — so here it is.</dd>
+        <dt>Hashtags</dt><dd class="tg"><span class="chip">#PureMitti</span><span class="chip">#MonthRecap</span><span class="chip">#FanFavorite</span><span class="chip">#BackByDemand</span><span class="chip">#NaturalSkincare</span></dd>
+        <dt>Audio</dt><dd>The original top post's audio (or an updated equivalent if expired).</dd>
+        <dt>Repurpose</dt><dd>Re-edit once; identical across IG/TikTok/Shorts; FB uses the original full-length.</dd>
+      </dl>
+    </article>
+
+    <article class="brief" style="--pc:var(--p-offer)">
+      <div class="top"><div class="dnum">30</div><div class="tmeta"><div class="dw">Tuesday <span class="chip-p">What's Coming</span></div><div class="plats">Reels · TikTok · Shorts · Facebook</div></div></div>
+      <div class="hook"><div class="hl">Hook · 0–2s</div><div class="ht">"Something new is curing in the workshop right now." <em>/ "Next month looks different."</em></div></div>
+      <dl class="fields">
+        <dt>Shots</dt><dd>Mystery product under a cloth, workshop behind → Suniti hinting, playful, no reveal → obscured ingredient prep → "Launching [month]" <span class="confirm">[confirm date]</span> → team prepping, momentum → "Be the first to know."</dd>
+        <dt>Script</dt><dd>"We've been quiet about this — but something new is curing right now. I can't show you everything yet, but it's been [X months] <span class="confirm">[confirm]</span> in the making, rooted in the same traditions as everything we make. Next month, Pure Mitti looks a little different."</dd>
+        <dt>CTA</dt><dd>Join the waitlist — link in bio for early access.</dd>
+        <dt>Caption</dt><dd class="cap">Something new is curing in the workshop.</dd>
+        <dt>Hashtags</dt><dd class="tg"><span class="chip">#PureMitti</span><span class="chip">#ComingSoon</span><span class="chip">#NewLaunch</span><span class="chip">#EarlyAccess</span><span class="chip">#HandmadeInNJ</span></dd>
+        <dt>Audio</dt><dd>Suspenseful building trend sound, or original VO.</dd>
+        <dt>Repurpose</dt><dd>Slightly longer VO for Shorts/IG/TikTok; FB is text-forward with the waitlist link in the first comment.</dd>
+      </dl>
+    </article>
+
+  </section>
+
+  <div class="foot wrap" style="padding-left:0;padding-right:0">
+    <p><b>How to run this.</b> Batch-film in the three sessions above, then post one brief a day in calendar order. Each week, check the six metrics, keep the top 20% of hooks, and replace the weakest posts. Everything marked in terracotta is a real detail to confirm before publishing — never post an unverified claim.</p>
+    <p style="margin:0;color:var(--ink-3)">Prepared for Pure Mitti · Suniti Ramanujam · Basking Ridge, NJ · Competitor set and content angles drawn from the accompanying research workbook.</p>
+  </div>
+
+</div>
+</div>

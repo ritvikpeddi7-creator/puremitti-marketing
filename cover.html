@@ -1,0 +1,49 @@
+<title>Pure Mitti · Social Playbook</title>
+<style>
+  :root{
+    --paper:#EFE8DC; --ink:#241E18; --ink-2:#544A3D; --ink-3:#7A6E5D;
+    --green:#3B4A34; --green-2:#54654A; --terra:#B15A36; --ochre:#C6903C; --line:#D8CBB4;
+    --serif:"Iowan Old Style","Palatino Linotype",Palatino,"Book Antiqua",Georgia,serif;
+    --sans:"Avenir Next","Avenir","Segoe UI",system-ui,-apple-system,Helvetica,Arial,sans-serif;
+    --mono:"SF Mono","JetBrains Mono",ui-monospace,Menlo,Consolas,monospace;
+  }
+  *{box-sizing:border-box;margin:0}
+  .cover{background:var(--paper);color:var(--ink);font-family:var(--sans);
+    height:100vh;display:flex;flex-direction:column;justify-content:space-between;
+    padding:60px 58px 50px;position:relative;overflow:hidden}
+  .cover::before{content:"";position:absolute;top:0;left:0;right:0;height:14px;background:var(--green)}
+  .cover::after{content:"";position:absolute;top:14px;left:0;width:210px;height:5px;background:var(--terra)}
+  .top .eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:.24em;text-transform:uppercase;color:var(--terra)}
+  .mid h1{font-family:var(--serif);font-weight:600;color:var(--ink);font-size:96px;letter-spacing:-.02em;line-height:.94}
+  .mid .rule{width:88px;height:3px;background:var(--ochre);margin:30px 0 26px}
+  .mid h2{font-family:var(--serif);font-weight:600;color:var(--green);font-size:34px;line-height:1.15;max-width:640px;text-wrap:balance}
+  .mid .sub{font-family:var(--serif);font-style:italic;font-size:21px;color:var(--green-2);margin-top:18px;max-width:600px}
+  .contents{margin-top:38px;display:flex;flex-direction:column;gap:12px;max-width:560px}
+  .contents .c{display:flex;gap:16px;align-items:baseline;border-top:1px solid var(--line);padding-top:12px}
+  .contents .c .n{font-family:var(--mono);font-size:12px;color:var(--terra);min-width:34px}
+  .contents .c .t b{font-family:var(--serif);font-size:17px;color:var(--ink);font-weight:600}
+  .contents .c .t span{font-size:13.5px;color:var(--ink-2);display:block;margin-top:1px}
+  .foot{display:flex;justify-content:space-between;align-items:flex-end;font-family:var(--mono);font-size:12.5px;color:var(--ink-2);letter-spacing:.03em}
+  .foot .r{text-align:right}
+  .foot b{color:var(--green);font-weight:500}
+  @page{size:Letter;margin:0}
+  @media print{*{-webkit-print-color-adjust:exact !important;print-color-adjust:exact !important}
+    .cover{height:auto;min-height:100vh}}
+</style>
+<div class="cover">
+  <div class="top"><div class="eyebrow">Pure Mitti · Basking Ridge, NJ</div></div>
+  <div class="mid">
+    <h1>Pure Mitti</h1>
+    <div class="rule"></div>
+    <h2>30-Day Social Content Playbook &amp; Competitor Field Report</h2>
+    <div class="sub">One shoot a day, four platforms — built on the intersection no competitor owns.</div>
+    <div class="contents">
+      <div class="c"><span class="n">01</span><div class="t"><b>The 30-day playbook</b><span>Strategy · pillars · hook bank · batch-production system · calendar · 30 daily video briefs</span></div></div>
+      <div class="c"><span class="n">02</span><div class="t"><b>Competitor field report</b><span>16 competitors · the content angle to borrow · the gap Pure Mitti can exploit against each</span></div></div>
+    </div>
+  </div>
+  <div class="foot">
+    <div class="l"><b>Non-toxic · Ayurveda-inspired · handmade</b><br>Personal &amp; home care · puremitti.com</div>
+    <div class="r">Prepared July 2026<br>Founder: Suniti Ramanujam</div>
+  </div>
+</div>

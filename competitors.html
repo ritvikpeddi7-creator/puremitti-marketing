@@ -1,0 +1,279 @@
+<title>Pure Mitti · Competitor Intelligence</title>
+<style>
+  :root{
+    --paper:#EFE8DC; --card:#F7F2E8; --card-2:#F1EADC;
+    --ink:#241E18; --ink-2:#544A3D; --ink-3:#7A6E5D;
+    --green:#3B4A34; --green-2:#54654A; --terra:#B15A36; --ochre:#C6903C;
+    --line:#D8CBB4;
+    --b-ayur:#6B4A6B; --b-soap:#B15A36; --b-home:#3E6B63; --b-local:#6E7B4D;
+    --serif:"Iowan Old Style","Palatino Linotype",Palatino,"Book Antiqua",Georgia,serif;
+    --sans:"Avenir Next","Avenir","Segoe UI",system-ui,-apple-system,Helvetica,Arial,sans-serif;
+    --mono:"SF Mono","JetBrains Mono",ui-monospace,Menlo,Consolas,monospace;
+  }
+  *{box-sizing:border-box}
+  .page{margin:0;background:var(--paper);color:var(--ink);font-family:var(--sans);
+    line-height:1.55;font-size:15px;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:1000px;margin:0 auto;padding:0 26px}
+  h1,h2,h3{font-family:var(--serif);font-weight:600;color:var(--green);margin:0;text-wrap:balance;line-height:1.12}
+  p{margin:0}
+  .eyebrow{font-family:var(--mono);font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--terra);margin:0 0 10px}
+  .mast{border-bottom:2px solid var(--green);padding:44px 0 26px;position:relative}
+  .mast::before{content:"";position:absolute;left:0;bottom:-2px;width:150px;height:2px;background:var(--terra)}
+  .mast h1{font-size:clamp(32px,5vw,52px);letter-spacing:-.015em;color:var(--ink)}
+  .mast .sub{font-family:var(--serif);font-style:italic;font-size:19px;color:var(--green-2);margin-top:12px;max-width:640px}
+  .mast .note{font-family:var(--mono);font-size:11px;color:var(--ink-3);margin-top:16px}
+
+  .bucket{padding:30px 0 6px}
+  .bucket-head{display:flex;align-items:center;gap:12px;margin-bottom:16px}
+  .bucket-head .dot{width:13px;height:13px;border-radius:4px;background:var(--bc)}
+  .bucket-head h2{font-size:22px}
+  .bucket-head .cnt{font-family:var(--mono);font-size:11px;color:var(--ink-3);margin-left:auto}
+
+  .comp{background:var(--card);border:1px solid var(--line);border-radius:12px;
+    padding:20px 22px;margin-bottom:14px;border-left:5px solid var(--bc);break-inside:avoid}
+  .comp .top{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap;margin-bottom:10px}
+  .comp .nm{font-family:var(--serif);font-size:20px;color:var(--ink);font-weight:600}
+  .comp .price{font-family:var(--mono);font-size:10.5px;letter-spacing:.05em;text-transform:uppercase;
+    color:var(--bc);border:1px solid var(--line);padding:2px 9px;border-radius:20px}
+  .comp .links{font-family:var(--mono);font-size:11.5px;color:var(--ink-3);margin-left:auto;letter-spacing:.02em}
+  .comp .sell{font-size:14px;color:var(--ink-2);margin-bottom:12px}
+  .comp .grid{display:grid;grid-template-columns:1fr 1fr;gap:10px 22px}
+  .comp .f .lab{font-family:var(--mono);font-size:9.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-3);margin-bottom:2px}
+  .comp .f .val{font-size:13.5px;color:var(--ink);line-height:1.4}
+  .comp .f.steal .lab{color:var(--terra)}
+  .comp .f.gap .val{color:var(--green)}
+
+  .themes{padding:34px 0 10px}
+  .themes h2{font-size:24px;margin-bottom:18px}
+  .theme{display:grid;grid-template-columns:1fr 1fr;gap:20px;background:var(--card);
+    border:1px solid var(--line);border-radius:11px;padding:16px 20px;margin-bottom:12px;break-inside:avoid}
+  .theme .k{font-family:var(--serif);font-size:15px;color:var(--green);font-weight:600}
+  .theme .k span{display:block;font-family:var(--mono);font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-3);margin-bottom:4px}
+  .theme .v{font-size:14px;color:var(--ink-2)}
+  .theme .v span{display:block;font-family:var(--mono);font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--terra);margin-bottom:4px}
+
+  .foot{padding:30px 0 50px;color:var(--ink-3);font-size:12.5px;font-family:var(--mono);letter-spacing:.02em}
+  @page{size:Letter;margin:14mm 13mm}
+  @media print{
+    *{-webkit-print-color-adjust:exact !important;print-color-adjust:exact !important}
+    .page{background:var(--paper) !important}
+    .wrap{max-width:100%;padding:0}
+    .mast{padding:6px 0 22px;break-after:avoid}
+    .bucket-head{break-after:avoid}
+    h2{break-after:avoid}
+  }
+</style>
+<div class="page"><div class="wrap">
+
+  <header class="mast">
+    <div class="eyebrow">Competitor intelligence · prepared July 2026</div>
+    <h1>Pure Mitti — the field</h1>
+    <div class="sub">16 competitors across four buckets, with the content angle to borrow and the gap Pure Mitti can exploit against each.</div>
+    <div class="note">Social handles marked "(verify)" should be confirmed before use. Follower/revenue figures intentionally omitted where unconfirmed.</div>
+  </header>
+
+  <section class="bucket" style="--bc:var(--b-ayur)">
+    <div class="bucket-head"><span class="dot"></span><h2>Ayurvedic beauty</h2><span class="cnt">6 brands</span></div>
+
+    <article class="comp" style="--bc:var(--b-ayur)">
+      <div class="top"><span class="nm">Ranavat</span><span class="price">Premium</span><span class="links">ranavat.com · @ranavat · TikTok @ranavat</span></div>
+      <div class="sell">Luxury Ayurvedic skin &amp; hair care.</div>
+      <div class="grid">
+        <div class="f steal"><div class="lab">Angle worth stealing</div><div class="val">Heritage ritual storytelling — saffron/rose, "how Indian royalty bathed," ingredient-to-bottle films.</div></div>
+        <div class="f"><div class="lab">Biggest strength</div><div class="val">Cinematic brand story + strong press/retail.</div></div>
+        <div class="f gap"><div class="lab">Gap for Pure Mitti</div><div class="val">Skincare-only &amp; pricey — we win on soaps + home care at an accessible price.</div></div>
+        <div class="f"><div class="lab">Content lean</div><div class="val">Ingredient education · founder heritage.</div></div>
+      </div>
+    </article>
+
+    <article class="comp" style="--bc:var(--b-ayur)">
+      <div class="top"><span class="nm">Fable &amp; Mane</span><span class="price">Mid–Premium</span><span class="links">fableandmane.com · @fableandmane</span></div>
+      <div class="sell">Ayurvedic haircare (oils, shampoo).</div>
+      <div class="grid">
+        <div class="f steal"><div class="lab">Angle worth stealing</div><div class="val">Sibling-founder story + scalp-massage ritual demos; cause marketing (tiger conservation).</div></div>
+        <div class="f"><div class="lab">Biggest strength</div><div class="val">Sephora distribution &amp; polished brand.</div></div>
+        <div class="f gap"><div class="lab">Gap for Pure Mitti</div><div class="val">Hair-only — we offer a full clean body + home lineup, handmade.</div></div>
+        <div class="f"><div class="lab">Content lean</div><div class="val">Founder heritage · ritual how-to.</div></div>
+      </div>
+    </article>
+
+    <article class="comp" style="--bc:var(--b-ayur)">
+      <div class="top"><span class="nm">Sahajan</span><span class="price">Premium</span><span class="links">sahajan.com · @sahajanskincare</span></div>
+      <div class="sell">Clinical Ayurvedic skincare.</div>
+      <div class="grid">
+        <div class="f steal"><div class="lab">Angle worth stealing</div><div class="val">Trend-jacking TikTok skits &amp; dances tied to wellness; "science + ritual" explainers.</div></div>
+        <div class="f"><div class="lab">Biggest strength</div><div class="val">Clinical credibility with a fun social voice.</div></div>
+        <div class="f gap"><div class="lab">Gap for Pure Mitti</div><div class="val">Clinical tone — we win on warmth, handmade craft, local NJ story.</div></div>
+        <div class="f"><div class="lab">Content lean</div><div class="val">Trend + education blend.</div></div>
+      </div>
+    </article>
+
+    <article class="comp" style="--bc:var(--b-ayur)">
+      <div class="top"><span class="nm">UMA Oils</span><span class="price">Luxury</span><span class="links">umaoils.com · @umaoils · TikTok (verify)</span></div>
+      <div class="sell">Estate-grown Ayurvedic face &amp; body oils.</div>
+      <div class="grid">
+        <div class="f steal"><div class="lab">Angle worth stealing</div><div class="val">Farm-to-bottle films from their own estate; harvest &amp; distillation footage.</div></div>
+        <div class="f"><div class="lab">Biggest strength</div><div class="val">Vertical, authentic sourcing story.</div></div>
+        <div class="f gap"><div class="lab">Gap for Pure Mitti</div><div class="val">Luxury price — we're everyday-accessible + broader range.</div></div>
+        <div class="f"><div class="lab">Content lean</div><div class="val">Process/sourcing transparency.</div></div>
+      </div>
+    </article>
+
+    <article class="comp" style="--bc:var(--b-ayur)">
+      <div class="top"><span class="nm">Kama Ayurveda</span><span class="price">Premium</span><span class="links">kamaayurveda.us · @kamaayurveda · TikTok (verify)</span></div>
+      <div class="sell">Ayurvedic skin, hair &amp; home.</div>
+      <div class="grid">
+        <div class="f steal"><div class="lab">Angle worth stealing</div><div class="val">Authentic heritage &amp; classical recipe education.</div></div>
+        <div class="f"><div class="lab">Biggest strength</div><div class="val">Established heritage brand.</div></div>
+        <div class="f gap"><div class="lab">Gap for Pure Mitti</div><div class="val">India-based feel — we're US-local, small-batch, founder-accessible.</div></div>
+        <div class="f"><div class="lab">Content lean</div><div class="val">Heritage education.</div></div>
+      </div>
+    </article>
+
+    <article class="comp" style="--bc:var(--b-ayur)">
+      <div class="top"><span class="nm">Forest Essentials</span><span class="price">Luxury</span><span class="links">forestessentialsindia.com · @forestessentials · TikTok (verify)</span></div>
+      <div class="sell">Luxury Ayurveda skin/hair/home.</div>
+      <div class="grid">
+        <div class="f steal"><div class="lab">Angle worth stealing</div><div class="val">Opulent heritage aesthetic; hand-churned / hand-poured craft visuals.</div></div>
+        <div class="f"><div class="lab">Biggest strength</div><div class="val">Premium aspirational imagery.</div></div>
+        <div class="f gap"><div class="lab">Gap for Pure Mitti</div><div class="val">Hard US access &amp; high price — we ship from NJ, approachable.</div></div>
+        <div class="f"><div class="lab">Content lean</div><div class="val">Aspirational craft.</div></div>
+      </div>
+    </article>
+  </section>
+
+  <section class="bucket" style="--bc:var(--b-soap)">
+    <div class="bucket-head"><span class="dot"></span><h2>Natural soap &amp; skincare</h2><span class="cnt">4 brands</span></div>
+
+    <article class="comp" style="--bc:var(--b-soap)">
+      <div class="top"><span class="nm">Dr. Bronner's</span><span class="price">Budget–Mid</span><span class="links">drbronner.com · @drbronner</span></div>
+      <div class="sell">Castile soaps &amp; all-purpose body/home.</div>
+      <div class="grid">
+        <div class="f steal"><div class="lab">Angle worth stealing</div><div class="val">"18-in-1" versatility hacks; activism &amp; values-led content.</div></div>
+        <div class="f"><div class="lab">Biggest strength</div><div class="val">Cult following + versatility.</div></div>
+        <div class="f gap"><div class="lab">Gap for Pure Mitti</div><div class="val">No Ayurveda or woman-founder heritage — we own ritual + aesthetic.</div></div>
+        <div class="f"><div class="lab">Content lean</div><div class="val">Versatility · values.</div></div>
+      </div>
+    </article>
+
+    <article class="comp" style="--bc:var(--b-soap)">
+      <div class="top"><span class="nm">Chagrin Valley Soap &amp; Salve</span><span class="price">Mid</span><span class="links">chagrinvalleysoapandsalve.com · @chagrinvalleysoap</span></div>
+      <div class="sell">Organic handmade soap, hair &amp; skin.</div>
+      <div class="grid">
+        <div class="f steal"><div class="lab">Angle worth stealing</div><div class="val">Deep ingredient-transparency &amp; "why this oil" education.</div></div>
+        <div class="f"><div class="lab">Biggest strength</div><div class="val">Hardcore natural credibility.</div></div>
+        <div class="f gap"><div class="lab">Gap for Pure Mitti</div><div class="val">Dated look, light on short-form video — we win on modern content.</div></div>
+        <div class="f"><div class="lab">Content lean</div><div class="val">Ingredient education.</div></div>
+      </div>
+    </article>
+
+    <article class="comp" style="--bc:var(--b-soap)">
+      <div class="top"><span class="nm">Osmia</span><span class="price">Premium</span><span class="links">osmia.com · @osmiaskincare · TikTok (verify)</span></div>
+      <div class="sell">Handmade luxury natural soap &amp; skincare.</div>
+      <div class="grid">
+        <div class="f steal"><div class="lab">Angle worth stealing</div><div class="val">Founder (ex-doctor) craft films; satisfying soap-cutting / pour ASMR.</div></div>
+        <div class="f"><div class="lab">Biggest strength</div><div class="val">Artisanal luxury positioning.</div></div>
+        <div class="f gap"><div class="lab">Gap for Pure Mitti</div><div class="val">Premium price — we pair craft with affordability + Ayurveda niche.</div></div>
+        <div class="f"><div class="lab">Content lean</div><div class="val">ASMR · craft.</div></div>
+      </div>
+    </article>
+
+    <article class="comp" style="--bc:var(--b-soap)">
+      <div class="top"><span class="nm">Meow Meow Tweet</span><span class="price">Mid</span><span class="links">meowmeowtweet.com · @meowmeowtweet · TikTok (verify)</span></div>
+      <div class="sell">Vegan handmade skincare, zero-waste.</div>
+      <div class="grid">
+        <div class="f steal"><div class="lab">Angle worth stealing</div><div class="val">Playful illustrated branding; refill &amp; zero-waste swaps.</div></div>
+        <div class="f"><div class="lab">Biggest strength</div><div class="val">Distinctive, memorable brand identity.</div></div>
+        <div class="f gap"><div class="lab">Gap for Pure Mitti</div><div class="val">No heritage story — we have founder + Ayurveda warmth.</div></div>
+        <div class="f"><div class="lab">Content lean</div><div class="val">Sustainability · brand identity.</div></div>
+      </div>
+    </article>
+  </section>
+
+  <section class="bucket" style="--bc:var(--b-home)">
+    <div class="bucket-head"><span class="dot"></span><h2>Clean home care</h2><span class="cnt">4 brands</span></div>
+
+    <article class="comp" style="--bc:var(--b-home)">
+      <div class="top"><span class="nm">Blueland</span><span class="price">Mid</span><span class="links">blueland.com · @blueland</span></div>
+      <div class="sell">Refillable cleaning &amp; soap tablets.</div>
+      <div class="grid">
+        <div class="f steal"><div class="lab">Angle worth stealing</div><div class="val">Oddly-satisfying tablet-fizz refills; plastic-saved counters; before/after swaps.</div></div>
+        <div class="f"><div class="lab">Biggest strength</div><div class="val">Category leader in refill/sustainability.</div></div>
+        <div class="f gap"><div class="lab">Gap for Pure Mitti</div><div class="val">Home-only, mass feel — we bridge home + body + personal ritual.</div></div>
+        <div class="f"><div class="lab">Content lean</div><div class="val">Sustainability swaps.</div></div>
+      </div>
+    </article>
+
+    <article class="comp" style="--bc:var(--b-home)">
+      <div class="top"><span class="nm">Branch Basics</span><span class="price">Mid–Premium</span><span class="links">branchbasics.com · @branchbasics</span></div>
+      <div class="sell">Non-toxic concentrate cleaner.</div>
+      <div class="grid">
+        <div class="f steal"><div class="lab">Angle worth stealing</div><div class="val">"Read your labels" toxin education + real testimonials.</div></div>
+        <div class="f"><div class="lab">Biggest strength</div><div class="val">Health-focused, loyal community.</div></div>
+        <div class="f gap"><div class="lab">Gap for Pure Mitti</div><div class="val">Cleaning-only, clinical — we add beauty + softer storytelling.</div></div>
+        <div class="f"><div class="lab">Content lean</div><div class="val">Education · testimonials.</div></div>
+      </div>
+    </article>
+
+    <article class="comp" style="--bc:var(--b-home)">
+      <div class="top"><span class="nm">Puracy</span><span class="price">Mid</span><span class="links">puracy.com · @puracy · TikTok (verify)</span></div>
+      <div class="sell">Plant-based home &amp; body care.</div>
+      <div class="grid">
+        <div class="f steal"><div class="lab">Angle worth stealing</div><div class="val">Family-founder transparency; "what's in it &amp; why" breakdowns.</div></div>
+        <div class="f"><div class="lab">Biggest strength</div><div class="val">Broad clean lineup, good value.</div></div>
+        <div class="f gap"><div class="lab">Gap for Pure Mitti</div><div class="val">Generic clean-brand feel — we own handmade + heritage.</div></div>
+        <div class="f"><div class="lab">Content lean</div><div class="val">Ingredient education.</div></div>
+      </div>
+    </article>
+
+    <article class="comp" style="--bc:var(--b-home)">
+      <div class="top"><span class="nm">Meliora</span><span class="price">Mid</span><span class="links">melioracleaning.com · @meliora_cleaningproducts · TikTok (verify)</span></div>
+      <div class="sell">Plastic-free cleaning products.</div>
+      <div class="grid">
+        <div class="f steal"><div class="lab">Angle worth stealing</div><div class="val">B-Corp / MADE SAFE proof; minimalist plastic-free swaps.</div></div>
+        <div class="f"><div class="lab">Biggest strength</div><div class="val">Certified sustainability credibility.</div></div>
+        <div class="f gap"><div class="lab">Gap for Pure Mitti</div><div class="val">No personal-care or story — we win on beauty + founder narrative.</div></div>
+        <div class="f"><div class="lab">Content lean</div><div class="val">Sustainability proof.</div></div>
+      </div>
+    </article>
+  </section>
+
+  <section class="bucket" style="--bc:var(--b-local)">
+    <div class="bucket-head"><span class="dot"></span><h2>Local NJ makers</h2><span class="cnt">2 brands</span></div>
+
+    <article class="comp" style="--bc:var(--b-local)">
+      <div class="top"><span class="nm">Cynplicity (Collingswood, NJ)</span><span class="price">Mid</span><span class="links">cynplicitysoaps.com · @ (verify)</span></div>
+      <div class="sell">French-milled handmade soap &amp; body.</div>
+      <div class="grid">
+        <div class="f steal"><div class="lab">Angle worth stealing</div><div class="val">Local maker-at-the-bench craft clips; farmers-market presence.</div></div>
+        <div class="f"><div class="lab">Biggest strength</div><div class="val">Real local/community roots.</div></div>
+        <div class="f gap"><div class="lab">Gap for Pure Mitti</div><div class="val">Small digital footprint — we can out-content &amp; add Ayurveda niche.</div></div>
+        <div class="f"><div class="lab">Content lean</div><div class="val">Local craft.</div></div>
+      </div>
+    </article>
+
+    <article class="comp" style="--bc:var(--b-local)">
+      <div class="top"><span class="nm">Apothecary Soap Company (NJ)</span><span class="price">Mid</span><span class="links">@apothecarysoapcompany · TikTok (verify)</span></div>
+      <div class="sell">Cold-process handmade soap &amp; skincare.</div>
+      <div class="grid">
+        <div class="f steal"><div class="lab">Angle worth stealing</div><div class="val">Cold-process pour/cut process videos; small-batch drops.</div></div>
+        <div class="f"><div class="lab">Biggest strength</div><div class="val">Loyal local following.</div></div>
+        <div class="f gap"><div class="lab">Gap for Pure Mitti</div><div class="val">Limited reach &amp; brand story — we win on polish + heritage.</div></div>
+        <div class="f"><div class="lab">Content lean</div><div class="val">Process video.</div></div>
+      </div>
+    </article>
+  </section>
+
+  <section class="themes">
+    <h2>Content themes worth stealing → Pure Mitti's version</h2>
+    <div class="theme"><div class="k"><span>Proven by</span>Satisfying soap-cutting / pour ASMR<br><small style="font-family:var(--mono);font-size:10px;color:var(--ink-3)">Osmia, Apothecary Co.</small></div><div class="v"><span>Our version</span>Film handmade batches — cutting cured bars, pouring clay masks. Raw, no music, subtitles.</div></div>
+    <div class="theme"><div class="k"><span>Proven by</span>Ingredient education "what's in it &amp; why"<br><small style="font-family:var(--mono);font-size:10px;color:var(--ink-3)">Chagrin, Puracy, Branch Basics</small></div><div class="v"><span>Our version</span>15-sec "meet the ingredient" — neem, tulsi, turmeric: what it does, how it's traditionally used.</div></div>
+    <div class="theme"><div class="k"><span>Proven by</span>Founder / heritage ritual story<br><small style="font-family:var(--mono);font-size:10px;color:var(--ink-3)">Ranavat, Fable &amp; Mane, UMA</small></div><div class="v"><span>Our version</span>Suniti on camera: ad-exec → clean brand; a family Ayurvedic ritual she grew up with.</div></div>
+    <div class="theme"><div class="k"><span>Proven by</span>Sustainability &amp; swaps, before/after<br><small style="font-family:var(--mono);font-size:10px;color:var(--ink-3)">Blueland, Meliora</small></div><div class="v"><span>Our version</span>"Swap your bathroom" — replace 3 toxic products with Pure Mitti bars; plastic-saved counter.</div></div>
+    <div class="theme"><div class="k"><span>Proven by</span>Trend-jacking with a wellness twist<br><small style="font-family:var(--mono);font-size:10px;color:var(--ink-3)">Sahajan</small></div><div class="v"><span>Our version</span>Use a trending audio for a self-care ritual; keep it warm, not cringe.</div></div>
+    <div class="theme"><div class="k"><span>Proven by</span>Versatility hacks<br><small style="font-family:var(--mono);font-size:10px;color:var(--ink-3)">Dr. Bronner's</small></div><div class="v"><span>Our version</span>"5 ways to use one Pure Mitti bar" — face, body, travel, gift, kids.</div></div>
+  </section>
+
+  <div class="foot">Prepared for Pure Mitti · Suniti Ramanujam · Basking Ridge, NJ · Compiled from web research, July 2026.</div>
+
+</div></div>
