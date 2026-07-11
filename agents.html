@@ -133,9 +133,9 @@
 
 <header class="hero">
   <div class="wrap">
-    <div class="eyebrow">Live in this browser</div>
+    <div class="eyebrow">Try them here</div>
     <h1>Your two AI agents</h1>
-    <div class="sub">The Planner drafts the video brief. The Editor polishes it before you film. Chat with both right here — no setup, no account.</div>
+    <div class="sub">The Planner drafts the video brief. The Editor polishes it before you film. Chat live by adding your own Anthropic API key — or set either one up free in ChatGPT or Claude below.</div>
   </div>
 </header>
 
@@ -157,7 +157,18 @@
     <div class="chatcard">
       <div class="chathead">
         <div class="who"><span class="sw" id="chat-sw"></span><span id="chat-who">Pure Mitti Planner</span></div>
-        <button class="clear" onclick="clearChat()">Clear chat</button>
+        <div style="display:flex;gap:8px">
+          <button class="clear" onclick="toggleKey()">API key</button>
+          <button class="clear" onclick="clearChat()">Clear chat</button>
+        </div>
+      </div>
+      <div id="keyrow" style="display:none;padding:14px 22px;border-bottom:1px solid var(--line);background:var(--card-2)">
+        <div style="font-family:var(--mono);font-size:11px;letter-spacing:.05em;text-transform:uppercase;color:var(--ink-3);margin-bottom:8px">Live chat — your Anthropic API key</div>
+        <div style="display:flex;gap:8px;flex-wrap:wrap">
+          <input id="key-input" type="password" placeholder="sk-ant-..." autocomplete="off" style="flex:1;min-width:200px;border:1px solid var(--line);border-radius:10px;padding:10px 12px;font-family:var(--mono);font-size:13px;background:#fff;color:var(--ink)">
+          <button class="send" style="background:var(--green)" onclick="saveKey()">Save</button>
+        </div>
+        <div style="font-size:11.5px;color:var(--ink-3);font-family:var(--mono);margin-top:8px;line-height:1.5">Stored only in this browser and sent directly to Anthropic — never to us or GitHub. No key? Use the free copy-paste setup below (works in any chatbot).</div>
       </div>
       <div class="chatlog" id="chatlog">
         <div class="empty" id="chat-empty">Try a starter below, or write your own request.</div>
@@ -167,7 +178,7 @@
         <textarea id="chat-input" rows="1" placeholder="Ask the Planner for a video brief…" onkeydown="handleKey(event)"></textarea>
         <button class="send" id="send-btn" onclick="sendMessage()">Send</button>
       </div>
-      <div class="note" id="chat-note">Replies are capped at roughly 700 words here — for the full 30-day plan, see the Playbook page.</div>
+      <div class="note" id="chat-note">Live chat uses your own Anthropic API key (stored only in your browser). Replies are capped here — for the full 30-day plan, see the Playbook page. No key? Use the free setup below.</div>
     </div>
   </div>
 </section>
@@ -259,6 +270,41 @@ const PLACEHOLDERS = {
 let currentAgent = "planner";
 let histories = { planner: [], editor: [] };
 let pending = false;
+let apiKey = "";
+try { apiKey = localStorage.getItem("pm_api_key") || ""; } catch(e){}
+
+function toggleKey(){
+  const r = document.getElementById("keyrow");
+  const open = r.style.display === "none" || !r.style.display;
+  r.style.display = open ? "block" : "none";
+  if (open){ document.getElementById("key-input").value = apiKey; document.getElementById("key-input").focus(); }
+}
+function saveKey(){
+  apiKey = document.getElementById("key-input").value.trim();
+  try { localStorage.setItem("pm_api_key", apiKey); } catch(e){}
+  document.getElementById("keyrow").style.display = "none";
+  const inp = document.getElementById("chat-input");
+  if (apiKey && inp.value.trim()) sendMessage();
+}
+function showNeedKey(){
+  const log = document.getElementById("chatlog");
+  const row = document.createElement("div");
+  row.className = "msg assistant";
+  const bubble = document.createElement("div");
+  bubble.className = "errbubble";
+  bubble.textContent = "To chat live here, add your Anthropic API key (kept only in your browser). ";
+  const b = document.createElement("button");
+  b.textContent = "Add key";
+  b.onclick = () => { const r=document.getElementById("keyrow"); r.style.display="block"; document.getElementById("key-input").focus(); };
+  bubble.appendChild(b);
+  const hint = document.createElement("div");
+  hint.style.cssText = "font-size:12px;color:#7A3319;margin-top:8px;line-height:1.5";
+  hint.textContent = "No key? Scroll down — you can set up either agent free in ChatGPT, Claude, or any chatbot. Works today.";
+  bubble.appendChild(hint);
+  row.appendChild(bubble);
+  log.appendChild(row);
+  log.scrollTop = log.scrollHeight;
+}
 
 function escapeHtml(s){
   return s.replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;");
@@ -372,6 +418,9 @@ async function sendMessage(isRetry){
     input.value = "";
   }
 
+  renderChat();
+  if (!apiKey){ showNeedKey(); return; }
+
   pending = true;
   document.getElementById("send-btn").disabled = true;
   renderChat();
@@ -379,9 +428,14 @@ async function sendMessage(isRetry){
   try {
     const response = await fetch("https://api.anthropic.com/v1/messages", {
       method: "POST",
-      headers: { "Content-Type": "application/json" },
+      headers: {
+        "Content-Type": "application/json",
+        "x-api-key": apiKey,
+        "anthropic-version": "2023-06-01",
+        "anthropic-dangerous-direct-browser-access": "true"
+      },
       body: JSON.stringify({
-        model: "claude-sonnet-4-6",
+        model: "claude-sonnet-5",
         max_tokens: 1000,
         system: SYSTEM_PROMPTS[agent],
         messages: histories[agent].map(m => ({ role: m.role, content: m.content }))
@@ -389,6 +443,10 @@ async function sendMessage(isRetry){
     });
 
     if (!response.ok){
+      if (response.status === 401 || response.status === 403){
+        pending = false; document.getElementById("send-btn").disabled = false; renderChat();
+        showError("That API key was rejected — double-check it and try again."); return;
+      }
       throw new Error("Request failed (" + response.status + ")");
     }
 
