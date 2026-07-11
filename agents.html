@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Pure Mitti · Your 2 AI Agents</title>
+<style>
+  :root{
+    --paper:#EFE8DC; --card:#F7F2E8; --card-2:#F1EADC;
+    --ink:#241E18; --ink-2:#544A3D; --ink-3:#7A6E5D;
+    --green:#3B4A34; --green-2:#54654A; --terra:#B15A36; --ochre:#C6903C; --line:#D8CBB4;
+    --serif:"Iowan Old Style","Palatino Linotype",Palatino,"Book Antiqua",Georgia,serif;
+    --sans:"Avenir Next","Avenir","Segoe UI",system-ui,-apple-system,Helvetica,Arial,sans-serif;
+    --mono:"SF Mono","JetBrains Mono",ui-monospace,Menlo,Consolas,monospace;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--sans);
+    line-height:1.6;font-size:16px;-webkit-font-smoothing:antialiased;
+    background-image:radial-gradient(circle at 12% -5%, #F2ECE0 0%, rgba(242,236,224,0) 42%)}
+  a{color:inherit}
+  button{font:inherit}
+  .wrap{max-width:1080px;margin:0 auto;padding:0 28px}
+  h1,h2,h3{font-family:var(--serif);font-weight:600;color:var(--green);text-wrap:balance;line-height:1.12;margin:0}
+  p{margin:0}
+  .eyebrow{font-family:var(--mono);font-size:11.5px;letter-spacing:.22em;text-transform:uppercase;color:var(--terra);font-weight:500;margin:0 0 12px}
+
+  /* Nav (shared) */
+  .sitenav{position:sticky;top:0;z-index:50;background:rgba(239,232,220,.92);backdrop-filter:blur(6px);border-bottom:1px solid var(--line)}
+  .navwrap{max-width:1080px;margin:0 auto;padding:16px 28px;display:flex;align-items:center;justify-content:space-between;gap:20px}
+  .brand{font-family:var(--serif);font-weight:600;font-size:19px;color:var(--ink);text-decoration:none;letter-spacing:-.01em;display:flex;align-items:center;gap:9px}
+  .brand::before{content:"";width:9px;height:9px;border-radius:50%;background:var(--terra);display:inline-block}
+  .navlinks{display:flex;gap:24px;font-family:var(--mono);font-size:11.5px;letter-spacing:.06em;text-transform:uppercase}
+  .navlinks a{color:var(--ink-2);text-decoration:none;padding-bottom:4px;border-bottom:2px solid transparent;white-space:nowrap}
+  .navlinks a:hover{color:var(--green)}
+  .navlinks a.active{color:var(--terra);border-bottom-color:var(--terra)}
+  @media(max-width:720px){.navlinks{gap:14px;font-size:10px}.navwrap{padding:13px 18px;flex-wrap:wrap;row-gap:8px}}
+
+  .hero{padding:56px 0 40px;border-bottom:1px solid var(--line);position:relative}
+  .hero::before{content:"";position:absolute;left:0;top:0;width:180px;height:5px;background:var(--terra)}
+  .hero h1{font-size:clamp(34px,6vw,58px);letter-spacing:-.015em}
+  .hero .sub{font-family:var(--serif);font-style:italic;font-size:clamp(17px,2.2vw,21px);color:var(--green-2);max-width:640px;margin-top:14px}
+
+  section{padding:44px 0;border-bottom:1px solid var(--line)}
+
+  /* Agent switcher */
+  .switcher{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:28px}
+  .aoption{background:var(--card);border:1px solid var(--line);border-radius:13px;padding:20px 22px;
+    text-align:left;cursor:pointer;border-left:5px solid var(--ac);transition:box-shadow .15s ease, transform .1s ease}
+  .aoption:hover{box-shadow:0 10px 24px -16px rgba(36,30,24,.4)}
+  .aoption.active{background:var(--card-2);box-shadow:0 0 0 2px var(--ac) inset}
+  .aoption:focus-visible{outline:2px solid var(--ac);outline-offset:2px}
+  .aoption .tag{font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--ac)}
+  .aoption h3{font-size:20px;margin:5px 0 6px;color:var(--ink)}
+  .aoption p{color:var(--ink-2);font-size:13.5px;line-height:1.5}
+  @media(max-width:720px){.switcher{grid-template-columns:1fr}}
+
+  /* Chat */
+  .chatcard{background:var(--card);border:1px solid var(--line);border-radius:16px;overflow:hidden}
+  .chathead{display:flex;align-items:center;justify-content:space-between;padding:16px 22px;border-bottom:1px solid var(--line);background:var(--card-2)}
+  .chathead .who{font-family:var(--serif);font-weight:600;color:var(--ink);font-size:16px;display:flex;align-items:center;gap:10px}
+  .chathead .who .sw{width:9px;height:9px;border-radius:50%;background:var(--ac)}
+  .chathead .clear{font-family:var(--mono);font-size:11px;letter-spacing:.05em;text-transform:uppercase;color:var(--ink-3);
+    background:transparent;border:1px solid var(--line);border-radius:20px;padding:6px 13px;cursor:pointer}
+  .chathead .clear:hover{color:var(--terra);border-color:var(--terra)}
+
+  .chatlog{padding:22px;display:flex;flex-direction:column;gap:16px;min-height:220px;max-height:520px;overflow-y:auto}
+  .msg{display:flex;gap:12px;max-width:88%}
+  .msg.user{margin-left:auto;flex-direction:row-reverse}
+  .msg .bubble{padding:12px 16px;border-radius:14px;font-size:14.5px;line-height:1.55}
+  .msg.user .bubble{background:var(--ac);color:#fff;border-bottom-right-radius:4px}
+  .msg.assistant .bubble{background:#fff;border:1px solid var(--line);color:var(--ink);border-bottom-left-radius:4px;white-space:normal}
+  .msg .bubble strong{color:var(--green)}
+  .msg.assistant .bubble{max-width:100%}
+  .msg .bubble p{margin:0 0 10px}
+  .msg .bubble p:last-child{margin-bottom:0}
+  .empty{color:var(--ink-3);font-size:13.5px;font-style:italic;font-family:var(--serif);padding:8px 4px}
+  .loading{display:flex;gap:5px;padding:14px 16px}
+  .loading span{width:6px;height:6px;border-radius:50%;background:var(--ink-3);display:inline-block;animation:bounce 1.2s infinite ease-in-out}
+  .loading span:nth-child(2){animation-delay:.15s}.loading span:nth-child(3){animation-delay:.3s}
+  @keyframes bounce{0%,80%,100%{transform:translateY(0);opacity:.4}40%{transform:translateY(-4px);opacity:1}}
+  .errbubble{background:#F7E5DE;border:1px solid var(--terra);color:#7A3319;border-radius:12px;padding:12px 16px;font-size:13.5px}
+  .errbubble button{margin-left:10px;background:var(--terra);color:#fff;border:none;border-radius:20px;padding:4px 12px;font-size:12px;cursor:pointer}
+
+  .starters{display:flex;flex-wrap:wrap;gap:8px;padding:0 22px 18px}
+  .chip{font-family:var(--mono);font-size:12px;background:#fff;border:1px solid var(--line);color:var(--ink-2);
+    padding:6px 13px;border-radius:20px;cursor:pointer;text-align:left}
+  .chip:hover{border-color:var(--ac);color:var(--ac)}
+
+  .inputrow{display:flex;gap:10px;padding:16px 22px;border-top:1px solid var(--line);background:var(--card-2)}
+  .inputrow textarea{flex:1;resize:none;border:1px solid var(--line);border-radius:12px;padding:11px 14px;
+    font-family:var(--sans);font-size:14.5px;background:#fff;color:var(--ink);min-height:46px;max-height:140px}
+  .inputrow textarea:focus{outline:2px solid var(--ac);outline-offset:1px}
+  .inputrow button.send{background:var(--ac);color:#fff;border:none;border-radius:12px;padding:0 22px;
+    font-family:var(--mono);font-size:12.5px;letter-spacing:.05em;text-transform:uppercase;cursor:pointer}
+  .inputrow button.send:disabled{opacity:.5;cursor:default}
+  .note{font-size:12px;color:var(--ink-3);padding:0 22px 18px;font-family:var(--mono)}
+
+  /* Alt routes */
+  .routes{display:flex;flex-direction:column;gap:0}
+  .route{display:flex;gap:16px;padding:18px 0;border-top:1px solid var(--line)}
+  .route:first-child{border-top:none}
+  .route .num{font-family:var(--serif);font-size:24px;font-weight:600;color:var(--terra);line-height:1;min-width:30px}
+  .route h3{font-size:17px;color:var(--ink);margin-bottom:3px}
+  .route .best{font-family:var(--mono);font-size:10.5px;letter-spacing:.05em;text-transform:uppercase;color:var(--green-2);margin-bottom:8px}
+  .route ol{margin:0;padding-left:20px;color:var(--ink-2);font-size:14px}
+  .route ol li{margin-bottom:4px}
+  .route code{font-family:var(--mono);font-size:12px;background:var(--card-2);padding:1px 6px;border-radius:5px;color:var(--green)}
+
+  .downloads{display:flex;flex-wrap:wrap;gap:12px;margin-top:22px}
+  .dl{font-family:var(--mono);font-size:12.5px;color:var(--green);background:var(--card);border:1px solid var(--line);
+    border-radius:8px;padding:9px 14px;text-decoration:none;display:inline-flex;align-items:center;gap:8px}
+  .dl:hover{border-color:var(--green)}
+
+  .callout{background:var(--green);color:#E6DEC9;border-radius:12px;padding:20px 24px;margin-top:24px}
+  .callout b{color:#F0C88A;font-family:var(--serif)}
+
+  .foot{padding:30px 0 60px;color:var(--ink-3);font-size:12.5px;font-family:var(--mono)}
+</style>
+</head>
+<body>
+
+<nav class="sitenav">
+  <div class="navwrap">
+    <a class="brand" href="index.html">Pure Mitti</a>
+    <div class="navlinks">
+      <a href="index.html">Home</a>
+      <a href="playbook.html">30-Day Playbook</a>
+      <a href="competitors.html">Competitor Report</a>
+      <a href="agents.html" class="active">AI Agents</a>
+    </div>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="eyebrow">Live in this browser</div>
+    <h1>Your two AI agents</h1>
+    <div class="sub">The Planner drafts the video brief. The Editor polishes it before you film. Chat with both right here — no setup, no account.</div>
+  </div>
+</header>
+
+<section>
+  <div class="wrap">
+    <div class="switcher">
+      <div class="aoption active" id="btn-planner" style="--ac:var(--green)" role="button" tabindex="0" onclick="selectAgent('planner')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();selectAgent('planner');}">
+        <div class="tag">Agent 1</div>
+        <h3>Pure Mitti Planner</h3>
+        <p>Creates ready-to-shoot video briefs — hook, shot list, script, caption, hashtags — for Reels, TikTok, Shorts and Facebook.</p>
+      </div>
+      <div class="aoption" id="btn-editor" style="--ac:var(--terra)" role="button" tabindex="0" onclick="selectAgent('editor')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();selectAgent('editor');}">
+        <div class="tag">Agent 2</div>
+        <h3>Pure Mitti Editor</h3>
+        <p>Polishes anything already written — scripts, hooks, captions, hashtags — and flags risky health claims before you post.</p>
+      </div>
+    </div>
+
+    <div class="chatcard">
+      <div class="chathead">
+        <div class="who"><span class="sw" id="chat-sw"></span><span id="chat-who">Pure Mitti Planner</span></div>
+        <button class="clear" onclick="clearChat()">Clear chat</button>
+      </div>
+      <div class="chatlog" id="chatlog">
+        <div class="empty" id="chat-empty">Try a starter below, or write your own request.</div>
+      </div>
+      <div class="starters" id="starters"></div>
+      <div class="inputrow">
+        <textarea id="chat-input" rows="1" placeholder="Ask the Planner for a video brief…" onkeydown="handleKey(event)"></textarea>
+        <button class="send" id="send-btn" onclick="sendMessage()">Send</button>
+      </div>
+      <div class="note" id="chat-note">Replies are capped at roughly 700 words here — for the full 30-day plan, see the Playbook page.</div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="eyebrow">Prefer ChatGPT or Claude directly?</div>
+    <h2 style="font-size:26px;margin-bottom:6px">Set up either agent as a standalone assistant</h2>
+    <p style="color:var(--ink-2);max-width:640px;margin:10px 0 26px;font-size:14.5px">All three routes do the same thing: give the AI its "brain" — a fixed set of instructions so it always acts like a Pure Mitti expert. Route 3 is free and works today.</p>
+
+    <div class="routes">
+      <div class="route">
+        <div class="num">1</div>
+        <div>
+          <h3>ChatGPT — Custom GPT</h3>
+          <div class="best">Best if you have ChatGPT Plus · gives you a clickable, shareable agent</div>
+          <ol>
+            <li>In ChatGPT, click your name → <code>My GPTs</code> → <code>Create a GPT</code> → <code>Configure</code>.</li>
+            <li>Name it "Pure Mitti Planner" (or Editor), then open the brain file below, copy everything, and paste it into the <code>Instructions</code> box.</li>
+            <li>Add the starter prompts above as conversation starters. Save → set to "Only me" or share a link.</li>
+          </ol>
+        </div>
+      </div>
+      <div class="route">
+        <div class="num">2</div>
+        <div>
+          <h3>Claude — Project</h3>
+          <div class="best">Best if you have Claude Pro</div>
+          <ol>
+            <li>In Claude, click <code>Projects</code> → <code>Create Project</code>, name it "Pure Mitti Planner".</li>
+            <li>Open <code>Set custom instructions</code>, paste the agent's brain file, save.</li>
+            <li>Every chat inside that project now behaves as the agent.</li>
+          </ol>
+        </div>
+      </div>
+      <div class="route">
+        <div class="num">3</div>
+        <div>
+          <h3>Free — works in any chatbot, today</h3>
+          <div class="best">No paid account needed · ChatGPT free, Claude free, Gemini, Copilot</div>
+          <ol>
+            <li>Open a new chat.</li>
+            <li>Open the brain file below, copy all of it, paste it as your first message, and send.</li>
+            <li>The AI is now the agent for the rest of that chat.</li>
+          </ol>
+        </div>
+      </div>
+    </div>
+
+    <div class="downloads">
+      <a class="dl" href="Agent_1_Content_Planner_PASTE.txt" download>↓ Agent 1 brain — Planner (.txt)</a>
+      <a class="dl" href="Agent_2_Editor_PASTE.txt" download>↓ Agent 2 brain — Editor (.txt)</a>
+      <a class="dl" href="PureMitti_2_AI_Agents_Guide.pdf" download>↓ Full setup guide (.pdf)</a>
+    </div>
+
+    <div class="callout"><b>Tip:</b> keep both agents open in two tabs (or switch between them above). Use the <b>Planner</b> to create a video brief, then paste its script into the <b>Editor</b> to polish it before you film. That two-step loop is the whole workflow.</div>
+  </div>
+</section>
+
+<div class="foot wrap">Prepared for Pure Mitti · Basking Ridge, NJ · Brain files live alongside this page.</div>
+
+<script>
+const SYSTEM_PROMPTS = {
+  planner: "You are the PURE MITTI CONTENT PLANNER \u2014 an AI agent that creates ready-to-shoot daily short-form video plans for a small brand called Pure Mitti.\n\nABOUT PURE MITTI\n- Non-toxic, Ayurveda-inspired personal-care and home-care brand.\n- Founder: Suniti Ramanujam (a former advertising executive who left to build a clean-living brand).\n- Products: handmade natural soaps, skincare, haircare, clay/pottery, and natural home-cleaning products.\n- Based in Basking Ridge, New Jersey. Sold at puremitti.com, plus Etsy and select retail.\n- Channels: Instagram Reels, TikTok, YouTube Shorts, Facebook.\n\nYOUR JOB\nTurn products, competitor angles, and the time of year into daily video plans the team can film and post. One video should be filmable once and reused across all four platforms (\"one shoot, four cuts\").\n\nBRAND VOICE (follow every time)\n- Warm, honest, ingredient-first. Lead with what IS in the product and why, not fear.\n- Approachable Ayurveda \u2014 explain traditional ingredients in plain English.\n- Founder-forward. Use Suniti's face, hands, and story often. People buy from people.\n- Handmade and small-batch is a strength \u2014 show the craft, the mess, the process.\n- NEVER make unproven health claims. Say \"traditionally used for\u2026\", \"helps soothe\u2026\", \"gentle enough for\u2026\" \u2014 never \"cures\", \"detoxes\", or \"treats [a condition]\".\n- No fear-mongering, no fake urgency, no hype words.\n- If you need a real detail you don't have (exact ingredients, prices, cure time, promo terms), ask for it or mark it [confirm] \u2014 never make it up.\n\nWHAT A DAILY PLAN LOOKS LIKE\nFor each day, output a compact video brief with EXACTLY these fields:\n1. Day / Weekday & Platforms\n2. Pillar \u2014 one of: Education, Founder/BTS, Product Spotlight/ASMR, Social Proof/UGC, Trend/Entertainment, Sustainability/Swap, Soft Offer. (Rotate \u2014 never 3 of the same pillar in a row.)\n3. Hook (first 2 seconds) \u2014 the exact on-screen text + spoken line. This is the most important field. Make it scroll-stopping.\n4. Shot list \u2014 4 to 6 quick shots, one line each.\n5. Voiceover / on-screen script \u2014 about 15\u201330 seconds.\n6. CTA \u2014 one clear action (save, comment a word, shop link).\n7. Caption \u2014 1 to 3 lines; the first line must work as a hook on its own.\n8. Hashtags \u2014 6 to 10, mixing niche + mid-size + branded (#PureMitti).\n9. Audio \u2014 a trending-sound suggestion OR \"original voiceover\".\n10. Repurpose note \u2014 how to cut this one shoot for all four platforms.\n\nDEFAULT WEEKLY RHYTHM (adjust for launches/holidays)\nMon Education \u00b7 Tue Product/ASMR \u00b7 Wed Founder/BTS \u00b7 Thu Trend \u00b7 Fri Social Proof \u00b7 Sat Sustainability/Swap \u00b7 Sun Soft Offer.\n\nPROVEN CONTENT ANGLES (borrow and adapt \u2014 these work for competitors)\n- Satisfying soap-cutting / pour ASMR.\n- Ingredient education: \"meet the ingredient\" \u2014 what it does, how it's traditionally used.\n- Founder / heritage ritual story.\n- Sustainability swaps and before/after (\"swap your bathroom\").\n- Versatility hacks (\"5 ways to use one bar\").\n- Farm/process transparency \u2014 show the making bench; the mess proves it's handmade.\n\nRULES\n- Hooks first. If a hook is weak the video fails \u2014 spend your effort there. Offer 2 hook options for the most important post of the week.\n- Make plans batch-shootable: group days that share a setup so the team can film a week in one session. Note this at the top.\n- Keep every brief skimmable. This is a shot sheet, not an essay.\n- When asked for \"a week\" or \"a month\", produce that many days plus a short batch-shoot checklist at the top (props, products, locations needed).\n\nHOW TO START\nWhen the user gives you a request (e.g. \"make next week's plan, theme = gifting\"), confirm the theme in one line, list what to film in a batch, then output the daily briefs in the format above. If key product details are missing, ask up to 3 quick questions first, or mark them [confirm].",
+  editor: "You are the PURE MITTI EDITOR \u2014 an AI agent that polishes and fact-checks content the team has already drafted for a small brand called Pure Mitti. You do NOT invent new campaigns; you take existing copy and make it shorter, sharper, truer to voice, and safe to publish.\n\nABOUT PURE MITTI\n- Non-toxic, Ayurveda-inspired personal-care and home-care brand.\n- Founder: Suniti Ramanujam (a former advertising executive who left to build a clean-living brand).\n- Products: handmade natural soaps, skincare, haircare, clay/pottery, natural home-cleaning.\n- Based in Basking Ridge, New Jersey. puremitti.com, plus Etsy and select retail.\n\nWHAT YOU EDIT\nVideo scripts, hooks, captions, hashtags, product descriptions, and emails. The user pastes a draft; you return a clean, ready-to-publish version.\n\nBRAND VOICE CHECKLIST (enforce on every edit)\n- Warm, honest, ingredient-first. Lead with what's in it and why.\n- Approachable Ayurveda \u2014 plain English, no gatekeeping.\n- Founder-forward and human. First person, conversational, contractions OK.\n- No fear-mongering, no fake urgency, no hype words (\"miracle\", \"detox your body\").\n- Concrete over vague \u2014 \"cold-pressed neem + tulsi\" beats \"natural goodness\".\n\nHARD SAFETY RULES\n- Flag and soften unproven health/medical claims. Replace \"cures / heals / detoxes / treats [condition]\" with \"traditionally used for\u2026\", \"helps soothe\u2026\", \"gentle enough for\u2026\". Cosmetics can't legally claim to cure.\n- No competitor bashing by name \u2014 contrast on values, not attacks.\n- Don't state prices, ingredients, or launch dates you can't confirm. Mark anything uncertain as [confirm] instead of guessing.\n\nHOW YOU RESPOND (this exact order)\n1. FINAL VERSION \u2014 the clean, ready-to-copy result. This comes first.\n2. WHAT CHANGED & WHY \u2014 max 5 bullets. Only meaningful changes (hook strength, length, voice, a flagged claim). No line-by-line noise.\n3. FLAGS \u2014 anything risky, unconfirmed, or that needs the founder's sign-off (health claims, prices, dates). If none, say \"None.\"\n\nIf the user pastes several pieces at once (a week of captions, a batch of hooks), return one tidy list, each with its final version.\n\nSPECIFIC TIGHTENING MOVES\n- The hook (first 2 seconds) is non-negotiable. If the opening doesn't earn the next 2 seconds, rewrite it, and offer 1 stronger alternative for the most important piece.\n- Cut throat-clearing (\"In this video\u2026\", \"Today I want to talk about\u2026\"). Start on the value or the tension.\n- One idea per video/caption. If it's doing three things, cut two.\n- Captions: the first line must stand alone as a scroll-stopper; the CTA is a single clear action.\n- Hashtags: trim to 6\u201310, remove dead/banned/overbroad tags, keep a niche + mid + branded (#PureMitti) mix.\n- Read-it-aloud test: if a real person wouldn't say it, rewrite it.\n\nWhen in doubt about a fact, ask or mark it [confirm] \u2014 never fabricate. Preserve the writer's structure; improve the words."
+};
+
+const STARTERS = {
+  planner: [
+    "Make next week's 7-day video plan.",
+    "Give me 5 hook options for a soap-cutting ASMR video.",
+    "Plan a gifting week for the holidays.",
+    "Turn this product into a Reel idea: our turmeric clay bar."
+  ],
+  editor: [
+    "Tighten this caption: \"Check out our new soap, it's so good for your skin and smells amazing!\"",
+    "Rewrite this hook to be scroll-stopping: \"Today I want to talk about our soap.\"",
+    "Check this script for risky health claims: \"This soap detoxes your skin and cures acne.\"",
+    "Trim these hashtags to the best 8: #soap #natural #skincare #ayurveda #handmade #smallbusiness #nj #clean #beauty #selfcare #wellness #organic"
+  ]
+};
+
+const LABELS = { planner: "Pure Mitti Planner", editor: "Pure Mitti Editor" };
+const PLACEHOLDERS = {
+  planner: "Ask the Planner for a video brief…",
+  editor: "Paste a script, hook, or caption to polish…"
+};
+
+let currentAgent = "planner";
+let histories = { planner: [], editor: [] };
+let pending = false;
+
+function escapeHtml(s){
+  return s.replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;");
+}
+
+function formatAssistant(text){
+  // Escape first, then apply minimal, safe formatting.
+  let safe = escapeHtml(text);
+  safe = safe.replace(/\*\*(.+?)\*\*/g, "<strong>$1</strong>");
+  const paras = safe.split(/\n{2,}/).map(p => p.split("\n").join("<br>"));
+  return paras.map(p => `<p>${p}</p>`).join("");
+}
+
+function selectAgent(agent){
+  currentAgent = agent;
+  document.getElementById("btn-planner").classList.toggle("active", agent === "planner");
+  document.getElementById("btn-editor").classList.toggle("active", agent === "editor");
+  document.getElementById("chat-who").textContent = LABELS[agent];
+  document.getElementById("chat-sw").style.background = agent === "planner" ? "var(--green)" : "var(--terra)";
+  document.getElementById("chat-input").placeholder = PLACEHOLDERS[agent];
+  renderStarters();
+  renderChat();
+}
+
+function renderStarters(){
+  const el = document.getElementById("starters");
+  el.innerHTML = "";
+  STARTERS[currentAgent].forEach(text => {
+    const b = document.createElement("button");
+    b.className = "chip";
+    b.textContent = text.length > 70 ? text.slice(0, 67) + "…" : text;
+    b.title = text;
+    b.onclick = () => { document.getElementById("chat-input").value = text; sendMessage(); };
+    el.appendChild(b);
+  });
+}
+
+function renderChat(){
+  const log = document.getElementById("chatlog");
+  const hist = histories[currentAgent];
+  log.innerHTML = "";
+  if (hist.length === 0){
+    const empty = document.createElement("div");
+    empty.className = "empty";
+    empty.textContent = "Try a starter below, or write your own request.";
+    log.appendChild(empty);
+    return;
+  }
+  hist.forEach(m => {
+    const row = document.createElement("div");
+    row.className = "msg " + (m.role === "user" ? "user" : "assistant");
+    row.style.setProperty("--ac", currentAgent === "planner" ? "var(--green)" : "var(--terra)");
+    const bubble = document.createElement("div");
+    bubble.className = "bubble";
+    if (m.role === "user"){
+      bubble.textContent = m.content;
+    } else {
+      bubble.innerHTML = formatAssistant(m.content);
+    }
+    row.appendChild(bubble);
+    log.appendChild(row);
+  });
+  if (pending){
+    const row = document.createElement("div");
+    row.className = "msg assistant";
+    const bubble = document.createElement("div");
+    bubble.className = "bubble loading";
+    bubble.innerHTML = "<span></span><span></span><span></span>";
+    row.appendChild(bubble);
+    log.appendChild(row);
+  }
+  log.scrollTop = log.scrollHeight;
+}
+
+function showError(message){
+  const log = document.getElementById("chatlog");
+  const row = document.createElement("div");
+  row.className = "msg assistant";
+  const bubble = document.createElement("div");
+  bubble.className = "errbubble";
+  bubble.textContent = message + " ";
+  const retry = document.createElement("button");
+  retry.textContent = "Retry";
+  retry.onclick = () => { row.remove(); sendMessage(true); };
+  bubble.appendChild(retry);
+  row.appendChild(bubble);
+  log.appendChild(row);
+  log.scrollTop = log.scrollHeight;
+}
+
+function handleKey(e){
+  if (e.key === "Enter" && !e.shiftKey){
+    e.preventDefault();
+    sendMessage();
+  }
+}
+
+async function sendMessage(isRetry){
+  if (pending) return;
+  const input = document.getElementById("chat-input");
+  const agent = currentAgent;
+  let text;
+  if (isRetry){
+    const hist = histories[agent];
+    if (hist.length === 0 || hist[hist.length-1].role !== "user") return;
+    text = hist[hist.length-1].content;
+  } else {
+    text = input.value.trim();
+    if (!text) return;
+    histories[agent].push({ role: "user", content: text });
+    input.value = "";
+  }
+
+  pending = true;
+  document.getElementById("send-btn").disabled = true;
+  renderChat();
+
+  try {
+    const response = await fetch("https://api.anthropic.com/v1/messages", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        model: "claude-sonnet-4-6",
+        max_tokens: 1000,
+        system: SYSTEM_PROMPTS[agent],
+        messages: histories[agent].map(m => ({ role: m.role, content: m.content }))
+      })
+    });
+
+    if (!response.ok){
+      throw new Error("Request failed (" + response.status + ")");
+    }
+
+    const data = await response.json();
+    const textBlocks = (data.content || []).filter(b => b.type === "text").map(b => b.text);
+    const reply = textBlocks.join("\n\n").trim();
+
+    if (!reply){
+      throw new Error("Empty response");
+    }
+
+    histories[agent].push({ role: "assistant", content: reply });
+    pending = false;
+    document.getElementById("send-btn").disabled = false;
+    renderChat();
+  } catch (err){
+    pending = false;
+    document.getElementById("send-btn").disabled = false;
+    renderChat();
+    showError("Couldn't reach the agent just now.");
+  }
+}
+
+function clearChat(){
+  histories[currentAgent] = [];
+  pending = false;
+  renderChat();
+}
+
+selectAgent("planner");
+</script>
+
+</body>
+</html>
