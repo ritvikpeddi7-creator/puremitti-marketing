@@ -1,31 +1,37 @@
 # Pure Mitti — Social Content Kit
 
-Everything here supports Pure Mitti's short-form video program (Instagram Reels · TikTok · YouTube Shorts · Facebook). Start with the PDF; run the plan from the tracker.
+Everything your boss asked for, mapped to her four instructions.
 
-## 📕 Send / print this
-| File | What it is |
-|---|---|
-| **PureMitti_Playbook_FULL.pdf** | The complete 46-page deliverable — cover + 30-day playbook + competitor report. **This is the one to give the boss.** |
+| # | Her instruction | What's delivered | File |
+|---|---|---|---|
+| 1 | **One AI for creating the plan** | The "Pure Mitti Planner" agent — its full brain + a setup guide | `agents/Agent_1_Content_Planner_PASTE.txt` + guide below |
+| 2 | **One AI for editing** | The "Pure Mitti Editor" agent — its full brain + setup guide | `agents/Agent_2_Editor_PASTE.txt` + guide below |
+| 3 | **Scan all competitors → Google Sheet** | 16 competitors: angle to steal + gap to exploit | `PureMitti_Competitors.csv` (import) · `.xlsx` · `.pdf` |
+| 4 | **Use that to create a daily video plan** | 30-day daily video plan (Reels/TikTok/Shorts/FB) | `PureMitti_30Day_Playbook.pdf` · `.md` |
 
-## 🗂 Run the plan from these
-| File | What it is | How to use |
-|---|---|---|
-| **PureMitti_Content_Calendar.xlsx** | 30-day tracker + batch-shoot plan + "confirm before posting" list | Drag into Google Drive → opens as a live Sheet. Set target dates, move each post Not started → Posted, log views/saves to find winners. |
-| **PureMitti_Competitors.xlsx** | 16 competitors, angle to steal, gap to exploit | Drag into Google Drive to open as a Sheet. |
-| **PureMitti_30Day_Playbook.md** | Editable master of the full plan | Paste into Google Docs or edit directly. |
+## 🤖 The two AI agents (instructions 1 & 2)
+These are real assistants you set up in **ChatGPT, Claude, or any free chatbot** — you give each one its "brain" (a text file), and it becomes a Pure Mitti expert.
+- **Setup guide (read this):** `agents/PureMitti_2_AI_Agents_Guide.pdf` — 2-minute steps for each route.
+- **Agent 1 brain:** `agents/Agent_1_Content_Planner_PASTE.txt`
+- **Agent 2 brain:** `agents/Agent_2_Editor_PASTE.txt`
 
-## 🖨 PDFs (also split out separately)
-- **PureMitti_30Day_Playbook.pdf** — playbook only
-- **PureMitti_Competitors.pdf** — competitor report only
+The workflow: **Planner** writes a video brief → paste its script into the **Editor** to polish before you film.
 
-## 🤖 Two AI agents (available inside Claude Code, any project)
-- **pure-mitti-content-planner** — builds new daily/weekly video plans. Ask: *"use the content planner for next month, theme = gifting."*
-- **pure-mitti-editor** — polishes and fact-checks scripts, hooks, captions. Ask: *"have the editor tighten these 5 captions."*
+## 📊 Competitors → Google Sheet (instruction 3)
+- **`PureMitti_Competitors.csv`** — in Google Drive: `New → File upload`, open it, then `File → Save as Google Sheets`. Done.
+- `PureMitti_Competitors.xlsx` / `.pdf` — same info, formatted.
+
+## 🎬 Daily video plan (instruction 4)
+- **`PureMitti_30Day_Playbook.pdf`** — strategy + hook bank + 30 daily video briefs (hook, shot list, script, caption, hashtags), built from the competitor angles.
+- `PureMitti_30Day_Playbook.md` — editable master.
+
+## 🗂 To actually run it
+- **`PureMitti_Content_Calendar.xlsx`** — a working tracker: 30 days with a Status dropdown, a batch-shoot plan, and a "confirm before posting" checklist. Import to Google Sheets to use live.
+
+## 📕 One file to send/print
+- **`PureMitti_COMPLETE_Package.pdf`** — cover + AI-agents guide + 30-day playbook + competitor report in one 49-page document.
 
 ## ⚠️ Before posting
-Everything marked in **terracotta** (in the PDFs) or `[confirm]` (in the markdown) is a real business detail to verify — hero ingredients, cure time, packaging, review quotes, offer terms. The "Confirm Before Posting" tab lists them all. Never publish an unverified claim.
-
-## 🔧 Source files (for regenerating)
-`playbook.html`, `competitors.html`, `cover.html` render to the PDFs via headless Chrome.
+Anything marked `[confirm]` (markdown) or in terracotta (PDFs) is a real business detail to verify — hero ingredients, cure time, packaging, review quotes, offer terms. The "Confirm Before Posting" tab lists them all. Never publish an unverified claim.
 
 *Prepared July 2026 · Basking Ridge, NJ.*
