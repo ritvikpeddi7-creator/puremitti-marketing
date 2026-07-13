@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Pure Mitti · Social Content Kit</title>
+<title>Pure Mitti · Social Kit</title>
 <style>
   :root{
     --paper:#EFE8DC; --card:#F7F2E8; --card-2:#F1EADC;
@@ -14,20 +14,16 @@
     --mono:"SF Mono","JetBrains Mono",ui-monospace,Menlo,Consolas,monospace;
   }
   *{box-sizing:border-box}
-  html{scroll-behavior:smooth}
-  body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--sans);
-    line-height:1.6;font-size:16px;-webkit-font-smoothing:antialiased;
+  body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--sans);line-height:1.6;font-size:16px;-webkit-font-smoothing:antialiased;
     background-image:radial-gradient(circle at 12% -5%, #F2ECE0 0%, rgba(242,236,224,0) 42%)}
   a{color:inherit}
-  .wrap{max-width:1080px;margin:0 auto;padding:0 28px}
+  .wrap{max-width:960px;margin:0 auto;padding:0 28px}
   h1,h2,h3{font-family:var(--serif);font-weight:600;color:var(--green);text-wrap:balance;line-height:1.12;margin:0}
   p{margin:0}
   .eyebrow{font-family:var(--mono);font-size:11.5px;letter-spacing:.22em;text-transform:uppercase;color:var(--terra);font-weight:500;margin:0 0 12px}
-
-  /* Nav */
   .sitenav{position:sticky;top:0;z-index:50;background:rgba(239,232,220,.92);backdrop-filter:blur(6px);border-bottom:1px solid var(--line)}
-  .navwrap{max-width:1080px;margin:0 auto;padding:16px 28px;display:flex;align-items:center;justify-content:space-between;gap:20px}
-  .brand{font-family:var(--serif);font-weight:600;font-size:19px;color:var(--ink);text-decoration:none;letter-spacing:-.01em;display:flex;align-items:center;gap:9px}
+  .navwrap{max-width:960px;margin:0 auto;padding:16px 28px;display:flex;align-items:center;justify-content:space-between;gap:20px}
+  .brand{font-family:var(--serif);font-weight:600;font-size:19px;color:var(--ink);text-decoration:none;display:flex;align-items:center;gap:9px}
   .brand::before{content:"";width:9px;height:9px;border-radius:50%;background:var(--terra);display:inline-block}
   .navlinks{display:flex;gap:24px;font-family:var(--mono);font-size:11.5px;letter-spacing:.06em;text-transform:uppercase}
   .navlinks a{color:var(--ink-2);text-decoration:none;padding-bottom:4px;border-bottom:2px solid transparent;white-space:nowrap}
@@ -35,141 +31,112 @@
   .navlinks a.active{color:var(--terra);border-bottom-color:var(--terra)}
   @media(max-width:720px){.navlinks{gap:14px;font-size:10px}.navwrap{padding:13px 18px;flex-wrap:wrap;row-gap:8px}}
 
-  /* Hero */
-  .hero{padding:76px 0 56px;border-bottom:1px solid var(--line);position:relative}
+  .hero{padding:68px 0 50px;border-bottom:1px solid var(--line);position:relative}
   .hero::before{content:"";position:absolute;left:0;top:0;width:180px;height:5px;background:var(--terra)}
-  .hero h1{font-size:clamp(44px,8vw,92px);letter-spacing:-.02em}
-  .hero .rule{width:88px;height:3px;background:var(--ochre);margin:26px 0 24px}
-  .hero .sub{font-family:var(--serif);font-style:italic;font-size:clamp(18px,2.4vw,23px);color:var(--green-2);max-width:620px;margin-bottom:14px}
-  .hero .desc{color:var(--ink-2);max-width:600px;font-size:15px}
-  .hero .meta{display:flex;flex-wrap:wrap;gap:10px 26px;margin-top:32px;font-family:var(--mono);font-size:12px;color:var(--ink-2);letter-spacing:.03em}
-  .hero .meta b{color:var(--green);font-weight:500}
+  .hero h1{font-size:clamp(44px,8vw,84px);letter-spacing:-.02em}
+  .hero .rule{width:80px;height:3px;background:var(--ochre);margin:24px 0 22px}
+  .hero .sub{font-family:var(--serif);font-style:italic;font-size:clamp(18px,2.4vw,23px);color:var(--green-2);max-width:600px}
+  .hero .desc{color:var(--ink-2);max-width:560px;font-size:15px;margin-top:12px}
 
-  section{padding:52px 0;border-bottom:1px solid var(--line)}
-  .sec-head{margin-bottom:30px}
-  .sec-head h2{font-size:clamp(24px,3.6vw,34px)}
-  .sec-head .kicker{margin-top:10px;color:var(--ink-2);max-width:600px}
+  section{padding:48px 0}
+  .sec-head{margin-bottom:26px}
+  .sec-head h2{font-size:clamp(24px,3.4vw,32px)}
+  .sec-head .kicker{margin-top:8px;color:var(--ink-2);max-width:560px}
 
-  /* Contents cards */
   .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
   .card{background:var(--card);border:1px solid var(--line);border-radius:13px;padding:26px 26px 24px;
-    text-decoration:none;display:flex;flex-direction:column;gap:10px;border-top:4px solid var(--ac);
-    transition:transform .15s ease, box-shadow .15s ease}
+    text-decoration:none;display:flex;flex-direction:column;gap:10px;border-top:4px solid var(--ac);transition:transform .15s ease, box-shadow .15s ease}
   .card:hover{transform:translateY(-3px);box-shadow:0 10px 24px -14px rgba(36,30,24,.35)}
   .card .n{font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--ac)}
-  .card h3{font-size:20px;color:var(--ink)}
-  .card p{font-size:13.5px;color:var(--ink-2);line-height:1.5}
-  .card .go{margin-top:auto;font-family:var(--mono);font-size:11.5px;letter-spacing:.05em;text-transform:uppercase;color:var(--ac);display:flex;align-items:center;gap:6px}
+  .card h3{font-size:21px;color:var(--ink)}
+  .card p{font-size:14px;color:var(--ink-2);line-height:1.5}
+  .card .go{margin-top:auto;font-family:var(--mono);font-size:11.5px;letter-spacing:.05em;text-transform:uppercase;color:var(--ac)}
   @media(max-width:820px){.cards{grid-template-columns:1fr}}
 
-  /* Confirm banner */
-  .confirm-banner{background:var(--green);color:#F2ECDD;border-radius:14px;padding:26px 28px;display:flex;gap:18px;align-items:flex-start}
-  .confirm-banner .dot{font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:#F0C88A;flex-shrink:0;padding-top:2px}
-  .confirm-banner p{color:#DED5C0;font-size:14.5px;line-height:1.6}
-  .confirm-banner b{color:#F5EFDF}
+  .how{background:var(--green);color:#EFE7D4;border-radius:14px;padding:26px 28px;margin-top:12px}
+  .how h3{color:#F5EFDF;font-size:19px;margin-bottom:14px}
+  .how .steps{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+  .how .s{display:flex;flex-direction:column;gap:5px}
+  .how .s .b{font-family:var(--mono);font-size:11px;color:#F0C88A}
+  .how .s p{color:#E6DEC9;font-size:13.5px;line-height:1.45}
+  @media(max-width:720px){.how .steps{grid-template-columns:1fr 1fr}}
 
-  /* Kit list */
-  .kit{display:flex;flex-direction:column;gap:0}
-  .kit .row{display:flex;gap:16px;align-items:baseline;border-top:1px solid var(--line);padding:14px 0}
-  .kit .row:first-child{border-top:none}
-  .kit .row .f{font-family:var(--mono);font-size:12px;color:var(--ink);background:var(--card-2);border:1px solid var(--line);
-    border-radius:6px;padding:5px 10px;min-width:210px}
-  .kit .row span{font-size:13.5px;color:var(--ink-2)}
-
-  .foot{padding:44px 0 60px;color:var(--ink-2);font-size:13.5px}
+  .foot{padding:36px 0 60px;color:var(--ink-2);font-size:13.5px;border-top:1px solid var(--line)}
   .foot b{color:var(--green);font-family:var(--serif)}
 </style>
 </head>
 <body>
-
 <nav class="sitenav">
   <div class="navwrap">
     <a class="brand" href="index.html">Pure Mitti</a>
     <div class="navlinks">
       <a href="index.html" class="active">Home</a>
-      <a href="playbook.html">30-Day Playbook</a>
-      <a href="competitors.html">Competitor Report</a>
-      <a href="agents.html">AI Agents</a>
+      <a href="playbook.html">Plan</a>
+      <a href="competitors.html">Competitors</a>
+      <a href="agents.html">AI Helpers</a>
     </div>
   </div>
 </nav>
 
 <header class="hero">
   <div class="wrap">
-    <div class="eyebrow">Basking Ridge, NJ · Prepared July 2026</div>
+    <div class="eyebrow">Basking Ridge, NJ</div>
     <h1>Pure Mitti</h1>
     <div class="rule"></div>
-    <div class="sub">One shoot a day, four platforms — built on the intersection no competitor owns.</div>
-    <p class="desc">Non-toxic, Ayurveda-inspired soaps, skincare, haircare and home care, handmade by founder Suniti Ramanujam. This kit is everything the social content system needs: two AI agents to plan and edit, a 16-brand competitor field report, and a 30-day daily video playbook.</p>
-    <div class="meta">
-      <div><b>Founder</b> Suniti Ramanujam</div>
-      <div><b>Channels</b> Reels · TikTok · Shorts · Facebook</div>
-      <div><b>Sold at</b> puremitti.com · Etsy · select retail</div>
-    </div>
+    <div class="sub">A simple social media system: plan a video a day, film it, let AI edit it, post it.</div>
+    <p class="desc">Non-toxic, Ayurveda-inspired soaps, skincare, haircare and home care, handmade by founder Suniti Ramanujam.</p>
   </div>
 </header>
 
 <section>
   <div class="wrap">
     <div class="sec-head">
-      <div class="eyebrow">What's in this kit</div>
-      <h2>Four pieces, one system</h2>
-      <p class="kicker">Scan the field, plan the shoot, edit the copy, film the day. Each piece feeds the next.</p>
+      <div class="eyebrow">Three simple things</div>
+      <h2>Everything's here</h2>
     </div>
     <div class="cards">
+      <a class="card" href="playbook.html" style="--ac:var(--ochre)">
+        <div class="n">The plan</div>
+        <h3>30 videos</h3>
+        <p>One video a day for a month. Each day tells you what to film in one line, plus the caption to post. That's it.</p>
+        <div class="go">See the plan →</div>
+      </a>
       <a class="card" href="agents.html" style="--ac:var(--green)">
-        <div class="n">01 · Live in this browser</div>
-        <h3>Two AI agents</h3>
-        <p>The Planner drafts ready-to-shoot video briefs. The Editor polishes and fact-checks anything already written. Chat with both right here, or set them up in ChatGPT/Claude.</p>
-        <div class="go">Open the agents →</div>
+        <div class="n">The helpers</div>
+        <h3>2 AI helpers</h3>
+        <p>Helper 1 plans your videos and writes captions (in Claude). Helper 2 edits your raw clips into a finished video to post.</p>
+        <div class="go">Open the helpers →</div>
       </a>
       <a class="card" href="competitors.html" style="--ac:var(--terra)">
-        <div class="n">02 · Field report</div>
+        <div class="n">The research</div>
         <h3>16 competitors</h3>
-        <p>Ayurvedic beauty, natural soap &amp; body, clean home care, and local NJ makers — the angle worth stealing and the gap Pure Mitti can exploit against each.</p>
-        <div class="go">Read the report →</div>
-      </a>
-      <a class="card" href="playbook.html" style="--ac:var(--ochre)">
-        <div class="n">03 · Daily video plan</div>
-        <h3>30-day playbook</h3>
-        <p>Strategy, pillars, a 40-hook bank, a batch-shoot production system, a content calendar, and all 30 daily video briefs — hook, shot list, script, caption, hashtags.</p>
-        <div class="go">See the playbook →</div>
+        <p>Who else sells clean, natural care — and the one thing Pure Mitti does that they don't. Good to know, quick to skim.</p>
+        <div class="go">Read it →</div>
       </a>
     </div>
   </div>
 </section>
 
-<section>
-  <div class="wrap">
-    <div class="confirm-banner">
-      <div class="dot">Before posting</div>
-      <p><b>Anything marked [confirm]</b> is a real business detail to verify — hero ingredients, cure time, packaging, review quotes, offer terms. Never publish an unproven health claim; the agents and the playbook are built to flag these automatically, but a human sign-off always comes last.</p>
-    </div>
-  </div>
-</section>
-
-<section>
+<section style="border-top:1px solid var(--line)">
   <div class="wrap">
     <div class="sec-head">
-      <div class="eyebrow">Full kit contents</div>
-      <h2>Every file, in one place</h2>
+      <div class="eyebrow">How it works</div>
+      <h2>Four steps, every day</h2>
     </div>
-    <div class="kit">
-      <div class="row"><span class="f">agents/Agent_1_Content_Planner_PASTE.txt</span><span>Agent 1's full brain — paste into any chatbot, or use it live on the AI Agents page.</span></div>
-      <div class="row"><span class="f">agents/Agent_2_Editor_PASTE.txt</span><span>Agent 2's full brain — same setup, live on the AI Agents page.</span></div>
-      <div class="row"><span class="f">PureMitti_2_AI_Agents_Guide.pdf</span><span>2-minute setup steps for ChatGPT, Claude, or any free chatbot.</span></div>
-      <div class="row"><span class="f">PureMitti_Competitors.csv / .xlsx / .pdf</span><span>16 competitors, ready to import into Google Sheets.</span></div>
-      <div class="row"><span class="f">PureMitti_30Day_Playbook.md / .pdf</span><span>The daily video plan — editable master and a formatted print version.</span></div>
-      <div class="row"><span class="f">PureMitti_Content_Calendar.xlsx</span><span>A working tracker with a Status dropdown, batch-shoot plan, and confirm-before-posting checklist.</span></div>
-      <div class="row"><span class="f">PureMitti_COMPLETE_Package.pdf</span><span>Cover + agents guide + playbook + competitor report, one file to send or print.</span></div>
+    <div class="how">
+      <div class="steps">
+        <div class="s"><div class="b">Step 1</div><p><b style="color:#F5EFDF">Plan</b><br>Open the plan (or ask Helper 1) for today's video idea + caption.</p></div>
+        <div class="s"><div class="b">Step 2</div><p><b style="color:#F5EFDF">Film</b><br>Shoot the one line on your phone — no editing needed.</p></div>
+        <div class="s"><div class="b">Step 3</div><p><b style="color:#F5EFDF">Edit</b><br>Upload the clip to Helper 2. It adds captions and cleans it up.</p></div>
+        <div class="s"><div class="b">Step 4</div><p><b style="color:#F5EFDF">Post</b><br>Post the video with the caption to Reels, TikTok, Shorts, Facebook.</p></div>
+      </div>
     </div>
   </div>
 </section>
 
 <div class="foot wrap">
-  <p><b>Pure Mitti</b> · Non-toxic · Ayurveda-inspired · handmade · Personal &amp; home care · puremitti.com</p>
-  <p style="margin-top:6px;color:var(--ink-3)">Prepared July 2026 · Basking Ridge, NJ.</p>
+  <p><b>Pure Mitti</b> · Non-toxic · Ayurveda-inspired · handmade · puremitti.com</p>
+  <p style="margin-top:6px;color:var(--ink-3)">Anything in [brackets] in the plan is a detail to fill in before posting.</p>
 </div>
-
 </body>
 </html>

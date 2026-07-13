@@ -1,39 +1,26 @@
-# Pure Mitti — Social Content Kit
+# Pure Mitti — Social Kit
 
-**Website:** open `index.html` — a landing page linking the 30-Day Playbook, Competitor Report, and AI Agents, with a nav bar across all pages. (Note: the in-page "chat with the agent" box on `agents.html` is a demo and needs an API key to work — use the copy-paste setup in the guide instead.)
+**Live site:** https://ritvikpeddi7-creator.github.io/puremitti-marketing/
+Open `index.html` for the landing page. Simple by design — one video a day.
 
-Everything your boss asked for, mapped to her four instructions.
+## Three simple things
+1. **The plan** (`playbook.html`) — 30 days, one video each. Each day: one line to film + the caption to post. ASMR only once (Day 9), since competitors rarely do it.
+2. **Two AI helpers** (`agents.html`):
+   - **Helper 1 — Planner** (use in **Claude**): plans videos and writes captions. Brain file: `Agent_1_Content_Planner_PASTE.txt` — paste it into a Claude chat and it becomes the planner.
+   - **Helper 2 — Video Editor**: an AI video app (**Submagic** or **Captions.ai**). She films raw clips, uploads them, and it returns an edited, captioned video to post. (A chatbot can't edit video — this is the tool that actually does it.)
+3. **The research** (`competitors.html`, `PureMitti_Competitors.csv` / `.xlsx` / `.pdf`) — 16 competitors, what to borrow, and the gap Pure Mitti owns.
 
-| # | Her instruction | What's delivered | File |
-|---|---|---|---|
-| 1 | **One AI for creating the plan** | The "Pure Mitti Planner" agent — its full brain + a setup guide | `Agent_1_Content_Planner_PASTE.txt` + guide below |
-| 2 | **One AI for editing** | The "Pure Mitti Editor" agent — its full brain + setup guide | `Agent_2_Editor_PASTE.txt` + guide below |
-| 3 | **Scan all competitors → Google Sheet** | 16 competitors: angle to steal + gap to exploit | `PureMitti_Competitors.csv` (import) · `.xlsx` · `.pdf` |
-| 4 | **Use that to create a daily video plan** | 30-day daily video plan (Reels/TikTok/Shorts/FB) | `PureMitti_30Day_Playbook.pdf` · `.md` |
+## The daily loop
+Plan → Film → Edit (Helper 2) → Post. Reels · TikTok · YouTube Shorts · Facebook.
 
-## The two AI agents (instructions 1 & 2)
-Real assistants you set up in **ChatGPT, Claude, or any free chatbot** — you give each one its "brain" (a text file), and it becomes a Pure Mitti expert.
-- **Setup guide (read this):** `PureMitti_2_AI_Agents_Guide.pdf` — 2-minute steps for each route.
-- **Agent 1 brain:** `Agent_1_Content_Planner_PASTE.txt`
-- **Agent 2 brain:** `Agent_2_Editor_PASTE.txt`
-
-The workflow: **Planner** writes a video brief → paste its script into the **Editor** to polish before you film.
-
-## Competitors → Google Sheet (instruction 3)
-- **`PureMitti_Competitors.csv`** — in Google Drive: `New → File upload`, open it, then `File → Save as Google Sheets`. Done.
-- `PureMitti_Competitors.xlsx` / `.pdf` — same info, formatted. Or view `competitors.html` on the site.
-
-## Daily video plan (instruction 4)
-- **`PureMitti_30Day_Playbook.pdf`** — strategy + hook bank + 30 daily video briefs (hook, shot list, script, caption, hashtags), built from the competitor angles.
-- `PureMitti_30Day_Playbook.md` — editable master. Or view `playbook.html` on the site.
-
-## To actually run it
-- **`PureMitti_Content_Calendar.xlsx`** — a working tracker: 30 days with a Status dropdown, a batch-shoot plan, and a "confirm before posting" checklist. Import to Google Sheets to use live.
-
-## One file to send/print
-- **`PureMitti_COMPLETE_Package.pdf`** — cover + AI-agents guide + 30-day playbook + competitor report in one 49-page document.
+## Files
+- `PureMitti_Simple_Plan.pdf` — the 30-day plan to send or print
+- `PureMitti_Competitors.csv` — import into Google Sheets (`New → File upload → Save as Google Sheets`)
+- `PureMitti_Competitors.xlsx` / `.pdf` — same info, formatted
+- `Agent_1_Content_Planner_PASTE.txt` — the Planner's brain for Claude
+- `index.html` · `playbook.html` · `competitors.html` · `agents.html` — the website
 
 ## Before posting
-Anything marked `[confirm]` (markdown) or in terracotta (PDFs) is a real business detail to verify — hero ingredients, cure time, packaging, review quotes, offer terms. The "Confirm Before Posting" tab lists them all. Never publish an unverified claim.
+Anything in [brackets] is a real detail to fill in — exact ingredients, price, a promo. Never post an unproven health claim (say "traditionally used to soothe," not "cures").
 
 *Prepared July 2026 · Basking Ridge, NJ.*
