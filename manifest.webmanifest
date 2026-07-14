@@ -1,0 +1,13 @@
+{
+  "name": "Pure Mitti — Video Plan",
+  "short_name": "Pure Mitti",
+  "description": "One video a day. Film the line, post the caption.",
+  "start_url": "playbook.html",
+  "display": "standalone",
+  "background_color": "#EFE8DC",
+  "theme_color": "#3B4A34",
+  "icons": [
+    { "src": "icon-192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any maskable" }
+  ]
+}
