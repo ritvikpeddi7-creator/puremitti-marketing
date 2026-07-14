@@ -1,0 +1,53 @@
+version: '3.8'
+services:
+  redis:
+    image: redis:7-alpine
+    restart: unless-stopped
+    ports:
+      - '6379:6379'
+
+  minio:
+    image: minio/minio
+    restart: unless-stopped
+    command: server /data
+    environment:
+      - MINIO_ROOT_USER=minioadmin
+      - MINIO_ROOT_PASSWORD=minioadmin
+    ports:
+      - '9000:9000'
+    volumes:
+      - minio-data:/data
+
+  server:
+    build:
+      context: .
+      dockerfile: Dockerfile.server
+    environment:
+      - REDIS_URL=redis://redis:6379
+      - S3_ENDPOINT=http://minio:9000
+      - AWS_ACCESS_KEY_ID=minioadmin
+      - AWS_SECRET_ACCESS_KEY=minioadmin
+      - S3_BUCKET=videos
+      - JWT_SECRET=super-secret-change-me
+    ports:
+      - '3000:3000'
+    depends_on:
+      - redis
+      - minio
+
+  worker:
+    build:
+      context: .
+      dockerfile: Dockerfile.worker
+    environment:
+      - REDIS_URL=redis://redis:6379
+      - S3_ENDPOINT=http://minio:9000
+      - AWS_ACCESS_KEY_ID=minioadmin
+      - AWS_SECRET_ACCESS_KEY=minioadmin
+      - S3_BUCKET=videos
+    depends_on:
+      - redis
+      - minio
+
+volumes:
+  minio-data:
